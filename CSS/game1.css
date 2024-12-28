@@ -1,0 +1,41 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 20px;
+}
+
+#wordSearchBoard {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 40px);
+    grid-gap: 5px;
+    margin: 20px auto;
+}
+
+.cell {
+    width: 40px;
+    height: 40px;
+    background-color: #f0f0f0;
+    text-align: center;
+    line-height: 40px;
+    cursor: pointer;
+    border: 1px solid #ddd;
+}
+
+.cell.found {
+    background-color: #90ee90;
+}
+
+#foundWords {
+    margin-top: 20px;
+}
+
+#timer {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}

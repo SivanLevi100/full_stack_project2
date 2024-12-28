@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>דף הבית - משחקים</title>
+    <link rel="stylesheet" href="../CSS/style.css">
+    <link rel="stylesheet" href="../CSS/home_page.css">
+</head>
+<body>
+    <!-- Header Placeholder: top_navigation -->
+    <div id="header-placeholder"></div>
+
+    <nav class="navbar">
+        <div class="container nav-container">
+            <h1>מרכז המשחקים</h1>
+            <div class="user-info">
+                <span id="userName"></span>
+                <button id="logoutBtn">התנתק</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <section class="user-stats">
+            <h2>הסטטיסטיקות שלי</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>משחקים ששוחקו</h3>
+                    <p id="gamesPlayed">0</p>
+                </div>
+                <div class="stat-card">
+                    <h3>ניקוד כולל</h3>
+                    <p id="totalScore">0</p>
+                </div>
+                <div class="stat-card">
+                    <h3>הישג שיא</h3>
+                    <p id="highScore">0</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="games-grid">
+            <h2>המשחקים שלנו</h2>
+            <div class="games-container">
+                <a href="../HTML/game1.html" class="game-card">
+                    <img src="/api/placeholder/300/200" alt="משחק טריוויה">
+                    <h3>טריוויה</h3>
+                    <p>בחן את הידע שלך במגוון נושאים</p>
+                </a>
+                <a href="" class="game-card">
+                    <img src="/api/placeholder/300/200" alt="משחק אנימציה">
+                    <h3>אנימציה</h3>
+                    <p>בחן את הידע שלך במגוון נושאים</p>
+                </a>
+                <div class="game-card disabled">
+                    <img src="/api/placeholder/300/200" alt="משחק בפיתוח">
+                    <h3>בקרוב</h3>
+                    <p>משחק חדש בפיתוח</p>
+                </div>
+                <div class="game-card disabled">
+                    <img src="/api/placeholder/300/200" alt="משחק בפיתוח">
+                    <h3>בקרוב</h3>
+                    <p>משחק חדש בפיתוח</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+
+    <!-- Footer Placeholder: bottom_navigation -->
+    <div id="footer-placeholder"></div>
+
+    <script src="../JS/home_page.js"></script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>משחק חיפוש מילים</title>
+    <link rel="stylesheet" href="../CSS/game1.css">
+
+</head>
+<body>
+    
+    <h1>משחק חיפוש מילים</h1>
+    <div>
+        <label for="difficulty">בחר רמת קושי:</label>
+        <select id="difficulty">
+            <option value="small">קטן (5x5)</option>
+            <option value="medium">בינוני (10x10)</option>
+            <option value="large">גדול (15x15)</option>
+        </select>
+        <button id="startGame">התחל משחק</button>
+    </div>
+
+    <div id="timer">זמן: <span id="time">30</span> שניות</div>
+    
+    <div id="wordSearchBoard"></div>
+    <div id="foundWords">
+        <h3>מילים מצאנו:</h3>
+        <ul id="foundList"></ul>
+    </div>
+
+    <script src="../JS/game1.js"></script>
+</body>
+</html>
