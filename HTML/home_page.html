@@ -6,6 +6,7 @@
     <title>דף הבית - משחקים</title>
     <link rel="stylesheet" href="../CSS/style.css">
     <link rel="stylesheet" href="../CSS/home_page.css">
+    <link href="https://fonts.googleapis.com/css2?family=Parkinsans:wght@300..800&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Header Placeholder: top_navigation -->
@@ -13,54 +14,76 @@
 
     <nav class="navbar">
         <div class="container nav-container">
-            <h1>מרכז המשחקים</h1>
+            <div class="navbar-logo">
+                <h1>GAME CENTER</h1>
+            </div>
             <div class="user-info">
                 <span id="userName"></span>
-                <button id="logoutBtn">התנתק</button>
+                <button id="logoutBtn">log out</button>
             </div>
         </div>
     </nav>
 
-    <main class="container">
+    <main class="main-container">
         <section class="user-stats">
-            <h2>הסטטיסטיקות שלי</h2>
+            <h2>My stats</h2>
             <div class="stats-grid">
                 <div class="stat-card">
-                    <h3>משחקים ששוחקו</h3>
+                    <h3>played games</h3>
                     <p id="gamesPlayed">0</p>
                 </div>
                 <div class="stat-card">
-                    <h3>ניקוד כולל</h3>
+                    <h3>overal score </h3>
                     <p id="totalScore">0</p>
                 </div>
                 <div class="stat-card">
-                    <h3>הישג שיא</h3>
+                    <h3>best score </h3>
                     <p id="highScore">0</p>
                 </div>
             </div>
         </section>
 
         <section class="games-grid">
-            <h2>המשחקים שלנו</h2>
+            <h2> Our Games</h2>
             <div class="games-container">
                 <a href="../HTML/game1.html" class="game-card">
                     <img src="/api/placeholder/300/200" alt="משחק טריוויה">
-                    <h3>טריוויה</h3>
+                    <h3>Trivia</h3>
                     <p>בחן את הידע שלך במגוון נושאים</p>
                 </a>
                 <a href="" class="game-card">
                     <img src="/api/placeholder/300/200" alt="משחק אנימציה">
-                    <h3>אנימציה</h3>
+                    <h3>Animation</h3>
                     <p>בחן את הידע שלך במגוון נושאים</p>
                 </a>
                 <div class="game-card disabled">
                     <img src="/api/placeholder/300/200" alt="משחק בפיתוח">
-                    <h3>בקרוב</h3>
+                    <h3>...soon</h3>
                     <p>משחק חדש בפיתוח</p>
                 </div>
                 <div class="game-card disabled">
                     <img src="/api/placeholder/300/200" alt="משחק בפיתוח">
-                    <h3>בקרוב</h3>
+                    <h3>...soon</h3>
+                    <p>משחק חדש בפיתוח</p>
+                </div>
+                <div class="game-card disabled">
+                    <img src="/api/placeholder/300/200" alt="משחק בפיתוח">
+                    <h3>...soon</h3>
+                    <p>משחק חדש בפיתוח</p>
+                </div>
+                <div class="game-card disabled">
+                    <img src="/api/placeholder/300/200" alt="משחק בפיתוח">
+                    <h3>...soon</h3>
+                    <p>משחק חדש בפיתוח</p>
+                </div>
+                <div class="game-card disabled">
+                    <img src="/api/placeholder/300/200" alt="משחק בפיתוח">
+                    <h3>...soon</h3>
+                    <p>משחק חדש בפיתוח</p>
+                </div>
+                <div class="game-card disabled">
+                    <img src="/api/placeholder/300/200" alt="משחק בפיתוח">
+                    <h3>...soon</h3>
                     <p>משחק חדש בפיתוח</p>
                 </div>
             </div>

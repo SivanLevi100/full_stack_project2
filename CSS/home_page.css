@@ -2,38 +2,43 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
+    background-color: #2e2048;
     color: #333;
     line-height: 1.6;
     direction: rtl;
+    background-image: url('../MEDIA/home_page_background.jpg'); /* Path to your image */
+    background-size: cover; /* Ensures the image covers the entire screen */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
 }
 
 /* סגנונות של הניווט */
 .navbar {
-    background-color: #004085;
-    color: white;
-    padding: 15px 0;
+    background-color: #725a9f80;
+    padding: 4px 0;
 }
 
 .navbar .container {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    justify-content:space-between;
 }
 
-.navbar h1 {
-    margin: 0;
-    font-size: 24px;
+.navbar-logo {
+    margin-right: 0px; /* Adjust to control positioning */
+    font-family: 'Parkinsans' , sans-serif;
+    color: #47f6fc;
 }
+
 
 .user-info {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 20px;
+    color: white;
 }
 
 .user-info #logoutBtn {
-    background-color: #dc3545;
+    background-color: #ecf93f;
     color: white;
     border: none;
     padding: 10px 15px;
@@ -43,14 +48,16 @@ body {
 }
 
 .user-info #logoutBtn:hover {
-    background-color: #c82333;
+    background-color: #64c832;
 }
 
 /* סגנונות עיקריים */
-.container {
-    max-width: 1200px;
-    margin: 20px auto;
-    padding: 0 15px;
+.main-container {
+    text-decoration: none;
+    padding: 0 80px ;
+    margin: 70px;
+    font-family: 'Parkinsans' , sans-serif;
+    font-Weight: 500;
 }
 
 /* סטטיסטיקות משתמש */
@@ -59,53 +66,62 @@ body {
 }
 
 .user-stats h2 {
+    font-size: 25px;
+    font-weight: 600;
     text-align: center;
     margin-bottom: 20px;
-    color: #004085;
+    color: #f93fd4;
+    
 }
 
 .stats-grid {
-    display: grid;
+    display: flex;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
+    gap: 40px;
+    justify-content: center;
 }
 
 .stat-card {
-    background-color: #ffffff;
+    width: 300px;
+    height: 90px;
+    background-color: #725a9f80;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
     text-align: center;
+    font-weight: 100;
 }
 
 .stat-card h3 {
-    margin-bottom: 10px;
     font-size: 18px;
-    color: #004085;
+    color: #47f6fc;
+    font-Weight: 200;
 }
 
 .stat-card p {
-    font-size: 24px;
-    font-weight: bold;
-    color: #333;
+    font-size: 20px;
+    color: #ffffff;
+    font-Weight: 500;
+    
 }
 
 /* רשת המשחקים */
 .games-grid {
-    margin-top: 40px;
+    margin-top: 70px;
 }
 
 .games-grid h2 {
     text-align: center;
-    margin-bottom: 20px;
-    color: #004085;
+    margin-bottom: 30px;
+    color: #f93fd4;
+    font-size: 25px;
 }
 
 .games-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-    justify-items: center;
+    gap: 40px;
+    justify-content: center;
 }
 
 .game-card {
@@ -115,6 +131,7 @@ body {
     text-align: center;
     padding: 20px;
     text-decoration: none;
+    font-Weight: 200;
     color: inherit;
     transition: transform 0.3s, box-shadow 0.3s;
 }
@@ -135,6 +152,7 @@ body {
     font-size: 20px;
     color: #004085;
     margin-bottom: 10px;
+    font-Weight: 500;
 }
 
 .game-card p {
