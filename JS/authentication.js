@@ -27,11 +27,13 @@ function saveUsers(users) {
 
 function setCurrentUser(user) {
     localStorage.setItem(CURRENT_USER_KEY, JSON.stringify(user));
-    // הגדרת קוקי לשעתיים
+    
+    // הגדרת קוקי תמידי
     const expiryDate = new Date();
-    expiryDate.setHours(expiryDate.getHours() + 2);
+    expiryDate.setFullYear(expiryDate.getFullYear() + 10); // קביעת תפוגה ל-10 שנים קדימה
     document.cookie = `userSession=${user.email};expires=${expiryDate.toUTCString()};path=/`;
 }
+
 
 // טיפול בטאבים
 document.querySelectorAll('.tab').forEach(tab => {

@@ -1,33 +1,41 @@
-<!DOCTYPE html>
-<html lang="he">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>משחק חיפוש מילים</title>
-    <link rel="stylesheet" href="../CSS/game1.css">
 
+<!DOCTYPE html>
+<html dir="rtl">
+<head>
+    <title>משחק זיכרון המספרים</title>
+    <link rel="stylesheet" href="../CSS/game1.css">
 </head>
 <body>
+    <div class="container">
+        <h1>Number memory game</h1>
+        <div id="game-area">
+        <div class="setup-screen" id="setup-screen">
+            <h2>בחר רמת קושי</h2>
+            <div class="difficulty-buttons">
+                <button class="difficulty-btn" data-difficulty="easy">קל</button>
+                <button class="difficulty-btn" data-difficulty="medium">בינוני</button>
+                <button class="difficulty-btn" data-difficulty="hard">קשה</button>
+            </div>
+            <button id="start-game" disabled>התחל משחק</button>
+        </div>
     
-    <h1>משחק חיפוש מילים</h1>
-    <div>
-        <label for="difficulty">בחר רמת קושי:</label>
-        <select id="difficulty">
-            <option value="small">קטן (5x5)</option>
-            <option value="medium">בינוני (10x10)</option>
-            <option value="large">גדול (15x15)</option>
-        </select>
-        <button id="startGame">התחל משחק</button>
+        <div class="game-container" id="game-container" style="display: none;">
+            <div class="game-info">
+                <div>רמת קושי: <span id="current-difficulty"></span></div>
+                <div>המספר המטרה: <span id="target-number">10</span></div>
+                <div>ניקוד: <span id="score">0</span></div>
+                <div>זמן: <span id="timer">60</span></div>
+            </div>
+            <div class="game-board" id="board"></div>
+        </div>
+    </div>
+       
     </div>
 
-    <div id="timer">זמן: <span id="time">30</span> שניות</div>
     
-    <div id="wordSearchBoard"></div>
-    <div id="foundWords">
-        <h3>מילים מצאנו:</h3>
-        <ul id="foundList"></ul>
-    </div>
-
-    <script src="../JS/game1.js"></script>
 </body>
+<script src="../JS/game1.js"></script>
 </html>
+
+
+
