@@ -1,12 +1,11 @@
 /* סגנונות כלליים */
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #2e2048;
+    background-color: #282346;
     color: #333;
     line-height: 1.6;
     direction: rtl;
-    background-image: url('../MEDIA/home_page_background.jpg'); /* Path to your image */
+    background-image: url('../MEDIA/home_page_background4.png'); /* Path to your image */
     background-size: cover; /* Ensures the image covers the entire screen */
     background-position: center; /* Centers the image */
     background-repeat: no-repeat; /* Prevents the image from repeating */
@@ -14,8 +13,12 @@ body {
 
 /* סגנונות של הניווט */
 .navbar {
-    background-color: #725a9f80;
+    background-color: #1a102f9b;
     padding: 4px 0;
+    position: fixed; /* Keeps the navbar fixed at the top */
+    top: 0; /* Positions it at the top of the viewport */
+    width: 100%; /* Ensures the navbar spans the full width of the page */
+    z-index: 1000; /* Ensures it stays above other elements */
 }
 
 .navbar .container {
@@ -25,7 +28,7 @@ body {
 
 .navbar-logo {
     margin-right: 0px; /* Adjust to control positioning */
-    font-family: 'Parkinsans' , sans-serif;
+    font-family: "Orbitron", serif;
     color: #47f6fc;
 }
 
@@ -35,29 +38,31 @@ body {
     align-items: center;
     gap: 20px;
     color: white;
+    font-family: "Michroma", serif;
 }
 
 .user-info #logoutBtn {
-    background-color: #ecf93f;
+    background-color: #f93fd4;
     color: white;
     border: none;
     padding: 10px 15px;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
+    font-family: "Michroma", serif;
 }
 
 .user-info #logoutBtn:hover {
-    background-color: #64c832;
+    background-color: #ea73d2;
 }
 
 /* סגנונות עיקריים */
 .main-container {
     text-decoration: none;
     padding: 0 80px ;
-    margin: 70px;
-    font-family: 'Parkinsans' , sans-serif;
+    margin: 120px;
     font-Weight: 500;
+    font-family: "Michroma", serif;
 }
 
 /* סטטיסטיקות משתמש */
@@ -87,14 +92,14 @@ body {
     background-color: #725a9f80;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
     text-align: center;
     font-weight: 100;
+    font-family: "Michroma", serif;
 }
 
 .stat-card h3 {
     font-size: 18px;
-    color: #47f6fc;
+    color: #f3fc47;
     font-Weight: 200;
 }
 
@@ -125,7 +130,7 @@ body {
 }
 
 .game-card {
-    background-color: #ffffff;
+    background-color: #51c4d3;
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     text-align: center;
@@ -152,7 +157,7 @@ body {
     font-size: 20px;
     color: #004085;
     margin-bottom: 10px;
-    font-Weight: 500;
+    font-Weight: 600;
 }
 
 .game-card p {
