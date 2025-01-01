@@ -1,3 +1,4 @@
+
 class MemoryGame {
     constructor() {
         this.difficultySettings = {
@@ -18,9 +19,28 @@ class MemoryGame {
         this.initializeSetup();
     }
 
+    /*פונקצית אתחול */
     initializeSetup() {
         this.setupEventListeners();
         this.selectedDifficulty = null;
+
+        // Load counter and score from localStorage
+        this.loadGameStats();
+    }
+    
+    /*אתחול סטטיסטקות */
+    loadGameStats() {
+        // Load counter and score from localStorage
+        this.gameCounter = parseInt(localStorage.getItem('gameCounter')) || 0; //מספר משחקים
+        this.highScore = parseInt(localStorage.getItem('highScore')) || 0;  //ציון הכי גבוה
+        this.totalScore = parseInt(localStorage.getItem('totalScore')) || 0;  //כל הציונים
+        this.scores = JSON.parse(localStorage.getItem('gameScores_arr')) || []; //מערך הציונים
+
+        // Display the counter and score
+        /*document.getElementById('game-counter').textContent = `משחקים שוחקו: ${this.gameCounter}`;
+        document.getElementById('high-score').textContent = `הניקוד הגבוה ביותר: ${this.highScore}`;*/
+    
+        
     }
 
     setupEventListeners() {
@@ -167,40 +187,15 @@ class MemoryGame {
         }
     }
 
-    /*checkMatch() {
-        const [card1, card2] = this.flippedCards;
-        const sum = card1.value + card2.value;
-        
-        if (sum === this.targetNumber) {
-            this.score += 10;
-            document.getElementById('score').textContent = this.score;
-            this.matchedPairs.add(card1.index);
-            this.matchedPairs.add(card2.index);
-        } else {
-            const card1Element = document.querySelector(`[data-index="${card1.index}"]`);
-            const card2Element = document.querySelector(`[data-index="${card2.index}"]`);
-            
-            card1Element.classList.remove('flipped');
-            card2Element.classList.remove('flipped');
-            card1Element.textContent = '';
-            card2Element.textContent = '';
-            card1Element.style.transform = 'scaleX(-1)';
-            card2Element.style.transform = 'scaleX(-1)';
-        }
-        
-        this.flippedCards = [];
-        
-        if (this.matchedPairs.size === this.cards.length) {
-            this.endGame('ניצחת! ');
-        }
-    }*/
     checkMatch() {
         const [card1, card2] = this.flippedCards;
         const sum = card1.value + card2.value;
         
         if (sum === this.targetNumber) {
             this.score += 10;
+          
             document.getElementById('score').textContent = this.score;
+
             
             // הוספת הקלאס החדש לקלפים שהותאמו
             const card1Element = document.querySelector(`[data-index="${card1.index}"]`);
@@ -225,11 +220,15 @@ class MemoryGame {
             card2Element.style.transform = 'scaleX(-1)';
         }
         
+
         this.flippedCards = [];
         
         if (this.matchedPairs.size === this.cards.length) {
             this.endGame('ניצחת! ');
         }
+
+        
+        
     }
 
     startTimer() {
@@ -245,42 +244,65 @@ class MemoryGame {
         }, 1000);
     }
 
-   /* endGame(message) {
-        this.gameActive = false;
-        clearInterval(this.timer);
-        
-        const endMessage = document.getElementById('end-message');
-        const restartButton = document.getElementById('restart-button');
-        
-        endMessage.textContent = `${message}הניקוד הסופי שלך: ${this.score}`;
-        endMessage.style.display = 'block';
-        restartButton.style.display = 'block';
-    }*/
+
+
     endGame(message) {
         this.gameActive = false;
         clearInterval(this.timer);
-        
+
+        // חישוב הציון הכי גבוה
+        this.scores.push(this.score);  // הכנסת ציון המשחק הנוכחי למערך הציונים
+        localStorage.setItem('gameScores_arr', JSON.stringify(this.scores));  // שמירה של מערך הציונים
+        let highScore = Math.max(...this.scores);  // חישוב הציון הגבוה ביותר
+        localStorage.setItem('highScore', highScore);  // שמירה של הציון הכי גבוה
+    
+        // חישוב הציון הכולל
+        let totalScore = this.scores.reduce((acc, score) => acc + score, 0); 
+        localStorage.setItem('totalScore', totalScore); 
+    
+        // עדכון מספר המשחקים
+        localStorage.setItem('gameCounter', this.gameCounter + 1);  
+
+    
         // יצירת אלמנט הודעת הסיום
         const overlay = document.createElement('div');
         overlay.className = 'game-end-overlay';
-        
+    
         overlay.innerHTML = `
             <h2>${message}</h2>
             <div class="score">הניקוד הסופי שלך: ${this.score}</div>
             <button id="new-game-btn">משחק חדש</button>
         `;
-        
+    
         // הוספת ההודעה ללוח המשחק
         const gameContainer = document.querySelector('.game-container');
         gameContainer.appendChild(overlay);
-        
+    
         // הוספת מאזין לחיצה לכפתור המשחק החדש
         document.getElementById('new-game-btn').addEventListener('click', () => {
+            // מחיקת המעטפת של סיום המשחק
             overlay.remove();
+    
+            // איפוס אלמנטים ובחירת רמת קושי מחדש
             document.getElementById('setup-screen').style.display = 'block';
             document.getElementById('game-container').style.display = 'none';
+    
+            // אפס את משתני המשחק
+            this.selectedDifficulty = null;
+            document.querySelectorAll('.difficulty-btn').forEach(btn => {
+                btn.classList.remove('selected');
+            });
+    
+            // איפוס זמן ניקוד
+            this.score = 0;
+            document.getElementById('score').textContent = this.score;
+            document.getElementById('timer').textContent = '';
+    
+            // איפוס כפתור התחלת משחק
+            document.getElementById('start-game').disabled = true;
         });
     }
+    
 }
 
 // יצירת המשחק
