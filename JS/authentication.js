@@ -1,7 +1,37 @@
+
+
 // ניהול משתמשים ב-localStorage
 const USERS_KEY = 'gameUsers';
 const CURRENT_USER_KEY = 'currentUser';
 let loginAttempts = {};
+
+/*
+//high Score
+localStorage.setItem('gameScores_arr',JSON.stringify([]));
+localStorage.setItem('highScore', 0); 
+//total Score
+localStorage.setItem('totalScore', 0); 
+//game Counter
+localStorage.setItem('gameCounter', 0); 
+*/
+
+// הגדרת הערכים הראשוניים אם לא קיימים ב-localStorage
+if (localStorage.getItem('gameScores_arr') === null) {
+    localStorage.setItem('gameScores_arr', JSON.stringify([]));  // מערך ציונים ריק
+}
+
+if (localStorage.getItem('highScore') === null) {
+    localStorage.setItem('highScore', 0);  // ציון גבוה 0
+}
+
+if (localStorage.getItem('totalScore') === null) {
+    localStorage.setItem('totalScore', 0);  // ציון כולל 0
+}
+
+if (localStorage.getItem('gameCounter') === null) {
+    localStorage.setItem('gameCounter', 0);  // מונה משחקים 0
+}
+
 
 // מחלקה למשתמש
 class User {
@@ -12,6 +42,14 @@ class User {
         this.scores = {};
         this.lastLogin = new Date();
         this.loginCount = 0;
+
+
+        /*this.gameScores_arr = [];
+        this.highScore = 0;
+        totalScore = 0;
+        gameCounter =0;*/
+        
+
     }
 }
 
@@ -32,6 +70,7 @@ function setCurrentUser(user) {
     const expiryDate = new Date();
     expiryDate.setFullYear(expiryDate.getFullYear() + 10); // קביעת תפוגה ל-10 שנים קדימה
     document.cookie = `userSession=${user.email};expires=${expiryDate.toUTCString()};path=/`;
+    
 }
 
 
@@ -48,6 +87,34 @@ document.querySelectorAll('.tab').forEach(tab => {
         document.getElementById(`${formType}Form`).classList.remove('hidden');
     });
 });
+
+
+/*לחיצה על הירשם כאן */
+
+// טיפול במעבר לטאב ההרשמה
+document.getElementById('switchToRegister').addEventListener('click', (e) => {
+    e.preventDefault();
+
+    // הסרת הפעילות מכל הטאבים
+    document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+
+    // הצגת טאב ההרשמה והסתרת שאר הטאבים
+    const registerTab = document.querySelector('[data-tab="register"]');
+    if (registerTab) {
+        registerTab.classList.add('active');
+        registerTab.style.display = 'block'; // להציג את הטאב
+    }
+
+    // הסתרת טופס ההתחברות והצגת טופס ההרשמה
+    document.querySelectorAll('.auth-form').forEach(form => form.classList.add('hidden'));
+    const registerForm = document.getElementById('registerForm');
+    if (registerForm) {
+        registerForm.classList.remove('hidden'); // להציג את טופס ההרשמה
+    }
+});
+
+
+
 
 // טיפול בהתחברות
 document.getElementById('loginForm').addEventListener('submit', (e) => {
@@ -107,7 +174,7 @@ document.getElementById('registerForm').addEventListener('submit', (e) => {
 });
 
 
-
+/*
 document.addEventListener('DOMContentLoaded', function () {
     // Load the header and footer in parallel
     Promise.all([
@@ -119,4 +186,5 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('footer-placeholder').innerHTML = data[1];  // bottom_navigation.html
     })
     .catch(error => console.error('Error loading content:', error));
-});
+});*/
+
