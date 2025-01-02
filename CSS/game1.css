@@ -1,7 +1,7 @@
 /* Global Styles & Variables */
 :root {
     --primary-color: #2196F3;
-    --secondary-color: #4CAF50;
+    --secondary-color: #5783e8;
     --accent-color: #47f6fc;
     --background-color: rgba(233, 247, 253, 0.9);
     --card-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -77,7 +77,7 @@ h1 {
     font-size: 1.2em;
     border: none;
     border-radius: 50px;
-    background: linear-gradient(145deg, var(--primary-color), #1976D2);
+    background: linear-gradient(145deg, var(--primary-color), #81b5f1);
     color: white;
     cursor: pointer;
     transition: all var(--transition-speed);
@@ -90,7 +90,7 @@ h1 {
 }
 
 .difficulty-btn.selected {
-    background: linear-gradient(145deg, var(--secondary-color), #388E3C);
+    background: linear-gradient(145deg, var(--secondary-color), #023466);
     transform: scale(1.05);
 }
 
@@ -100,7 +100,7 @@ h1 {
     font-size: 1.4em;
     border: none;
     border-radius: 50px;
-    background: linear-gradient(145deg, var(--secondary-color), #388E3C);
+    background: linear-gradient(125deg, var(--secondary-color), #023466);
     color: white;
     cursor: pointer;
     transition: all var(--transition-speed);
@@ -144,12 +144,24 @@ h1 {
 }
 
 /* Game Board */
-.game-board {
+/*.game-board {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 15px;
     padding: 20px;
     perspective: 1000px;
+}*/
+
+/* Game Board */
+.game-board {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* עיצוב לוח במשבצות */
+    gap: 15px;
+    padding: 20px;
+    perspective: 1000px; /* אפקט פרספקטיבה */
+    background-color: #fff; /* רקע בהיר */
+    border-radius: 10px; /* פינות מעוגלות */
+    border: 1px solid #ddd; /* מסגרת קלה */
 }
 
 /* Cards */
@@ -176,8 +188,9 @@ h1 {
 }
 
 .card.flipped {
-    background: linear-gradient(145deg, var(--secondary-color), #388E3C);
+    background: linear-gradient(115deg, #91a0c3, #76ae79);
     transform: rotateY(180deg);
+   
 }
 
 /* Game End Overlay */
