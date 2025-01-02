@@ -8,43 +8,64 @@ function checkAuth() {
     return currentUser;
 }
 
+
+function getUsers() {
+    const users = localStorage.getItem('gameUsers');
+    return users ? JSON.parse(users) : {};
+}
+
+function saveUsers(users) {
+    localStorage.setItem('gameUsers', JSON.stringify(users));
+}
+
+
+function getCurrentUser() {
+    const user = localStorage.getItem('currentUser');
+    return user ? JSON.parse(user) : null;
+}
+
 // עדכון פרטי משתמש בדף
 function updateUserInfo(user) {
     document.getElementById('userName').textContent = `Hello, ${user.name}`;
-    
-    // עדכון סטטיסטיקות
-    /*const gamesPlayed = Object.keys(user.scores).length;
-    const totalScore = Object.values(user.scores).reduce((sum, score) => sum + score, 0);
-    const highScore = Math.max(...Object.values(user.scores), 0);
+    displayStatistics(user);
+}
 
+// עדכון סטטיסטיקות
+function displayStatistics(user) {
+    // חישוב סטטיסטיקות למשתמש הנוכחי
+    const gamesPlayed = user.gameCounter || 0;
+    const totalScore = user.totalScore || 0;
+    const highScore = user.highScore || 0;
+
+    // עדכון אלמנטים ב-HTML
     document.getElementById('gamesPlayed').textContent = gamesPlayed;
     document.getElementById('totalScore').textContent = totalScore;
-    document.getElementById('highScore').textContent = highScore;*/
+    document.getElementById('highScore').textContent = highScore;
 
-    // אתחול קונטור משחקים וסטטיסטיקות מהlocalStorage אם יש
-    this.gameCounter = localStorage.getItem('gameCounter') ? parseInt(localStorage.getItem('gameCounter')) : 0;
-    this.highScore = localStorage.getItem('highScore') ? parseInt(localStorage.getItem('highScore')) : 0;
-    this.totalScore = localStorage.getItem('totalScore') ? parseInt(localStorage.getItem('totalScore')) : 0;
-    
-    // עדכון המידע בסטטיסטיקות
-    document.getElementById('gamesPlayed').textContent = this.gameCounter;
-    document.getElementById('totalScore').textContent = this.totalScore;
-    document.getElementById('highScore').textContent = this.highScore;
+    // לוח מובילים (leaderboard)
+    const users = getUsers();
+    const otherUsers = Object.values(users).filter(u => u.email !== user.email);
 
-
-
+    const leaderboard = document.getElementById('leaderboard');
+    leaderboard.innerHTML = otherUsers
+        .sort((a, b) => (b.totalScore || 0) - (a.totalScore || 0)) // סידור לפי ניקוד יורד
+        .map(u => `<li>${u.name}: ${u.totalScore || 0} נקודות</li>`)
+        .join('');
 }
 
 // טיפול בהתנתקות
 document.getElementById('logoutBtn').addEventListener('click', () => {
     localStorage.removeItem('currentUser');
     document.cookie = 'userSession=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
-    window.location.href = '../HTML/index.html';
-}); 
+    window.location.href = '../index.html';
+});
 
 // אתחול הדף
-const currentUser = checkAuth();
-if (currentUser) {
-    updateUserInfo(currentUser);
+document.addEventListener('DOMContentLoaded', () => {
+    const currentUser = checkAuth();
+    if (currentUser) {
+        updateUserInfo(currentUser);
+    }
+});
 
-}
+

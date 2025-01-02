@@ -6,6 +6,25 @@ let score = 0;
 let timeLeft = 30; // Game duration in seconds
 let gameInterval, timerInterval;
 
+// פונקציות עזר
+function updateUserPoints(gameName, points) {
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    if (!currentUser) {
+        console.error("No user is currently logged in.");
+        return;
+    }
+
+    currentUser.scores[gameName] = (currentUser.scores[gameName] || 0) + points;
+    currentUser.totalScore = (currentUser.totalScore || 0) + points;
+    currentUser.gameCounter = (currentUser.gameCounter || 0) + 1;
+
+    const users = JSON.parse(localStorage.getItem('gameUsers')) || {};
+    users[currentUser.email] = currentUser;
+    localStorage.setItem('gameUsers', JSON.stringify(users));
+    localStorage.setItem('currentUser', JSON.stringify(currentUser));
+}
+
+
 // Initialize the game-over message
 gameOverMessage.id = "game-over-message";
 gameOverMessage.style.display = "none"; // Hide initially
@@ -85,6 +104,9 @@ function endGame() {
     gameArea.innerHTML = ""; // Clear remaining objects
     document.getElementById("final-score").textContent = score; // Update the final score in the overlay
     gameOverMessage.style.display = "flex"; // Show the game-over message
+
+    // Update total points in the database
+    updateUserPoints('Catch the Apple', score); // Update total score at the end of the game
 }
 
 // Restart button functionality
