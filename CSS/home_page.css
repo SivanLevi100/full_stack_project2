@@ -30,6 +30,7 @@ body {
     margin-right: 0px; /* Adjust to control positioning */
     font-family: "Orbitron", serif;
     color: #47f6fc;
+    font-size: 15px;
 }
 
 
@@ -38,7 +39,7 @@ body {
     align-items: center;
     gap: 20px;
     color: white;
-    font-family: "Parkinsans", serif;
+    font-family: "Montserrat", serif;
 }
 
 .user-info #logoutBtn {
@@ -49,7 +50,7 @@ body {
     border-radius: 20px;
     cursor: pointer;
     transition: background-color 0.3s;
-    font-family: "Parkinsans", serif;
+    font-family: "Montserrat", serif;
 }
 
 .user-info #logoutBtn:hover {
@@ -62,7 +63,7 @@ body {
     padding: 0 80px ;
     margin: 120px;
     font-Weight: 500;
-    font-family: "Michroma", serif;
+    font-family: "Montserrat", serif;
 }
 
 /* סטטיסטיקות משתמש */
@@ -93,20 +94,19 @@ body {
     padding: 20px;
     border-radius: 10px;
     text-align: center;
-    font-weight: 100;
-    font-family: "Parkinsans", serif;
+    font-family: "Montserrat", serif;
 }
 
 .stat-card h3 {
     font-size: 18px;
     color: #f3fc47;
-    font-Weight: 200;
+    font-weight: 400;
 }
 
 .stat-card p {
     font-size: 20px;
     color: #ffffff;
-    font-Weight: 500;
+    font-Weight: 300;
     
 }
 
@@ -124,6 +124,7 @@ body {
     margin-bottom: 30px;
     color: #f93f86;
     font-size: 25px;
+    font-Weight: 500;
 }
 
 .games-container {
@@ -140,7 +141,7 @@ body {
     text-align: center;
     padding: 20px;
     text-decoration: none;
-    font-Weight: 200;
+    font-Weight: 400;
     color: inherit;
     transition: transform 0.3s, box-shadow 0.3s;
 }
@@ -167,6 +168,7 @@ body {
 .game-card p {
     font-size: 16px;
     color: #555;
+    
 }
 
 .game-card.disabled {
