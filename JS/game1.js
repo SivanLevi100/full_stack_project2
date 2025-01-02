@@ -1,4 +1,4 @@
-
+//document.getElementById('userName').textContent = `Hello, ${user.name}`;
 class MemoryGame {
     constructor() {
         this.difficultySettings = {
@@ -17,6 +17,7 @@ class MemoryGame {
         };
         
         this.initializeSetup();
+
     }
 
     /*פונקצית אתחול */
@@ -31,15 +32,17 @@ class MemoryGame {
     /*אתחול סטטיסטקות */
     loadGameStats() {
         // Load counter and score from localStorage
-        this.gameCounter = parseInt(localStorage.getItem('gameCounter')) || 0; //מספר משחקים
-        this.highScore = parseInt(localStorage.getItem('highScore')) || 0;  //ציון הכי גבוה
-        this.totalScore = parseInt(localStorage.getItem('totalScore')) || 0;  //כל הציונים
-        this.scores = JSON.parse(localStorage.getItem('gameScores_arr')) || []; //מערך הציונים
+        this.gameCounter = parseInt(localStorage.getItem(user.gameCounter)) || 0; //מספר משחקים
+        this.highScore = parseInt(localStorage.getItem(user.highScore)) || 0;  //ציון הכי גבוה
+        this.totalScore = parseInt(localStorage.getItem(user.totalScore)) || 0;  //כל הציונים
+        this.scores = JSON.parse(localStorage.getItem(user.gameScore_arr)) || []; //מערך הציונים
 
         // Display the counter and score
         /*document.getElementById('game-counter').textContent = `משחקים שוחקו: ${this.gameCounter}`;
         document.getElementById('high-score').textContent = `הניקוד הגבוה ביותר: ${this.highScore}`;*/
-    
+        
+
+        //current_User = JSON.parse(localStorage.getItem('currentUser'));
         
     }
 
@@ -249,6 +252,10 @@ class MemoryGame {
     endGame(message) {
         this.gameActive = false;
         clearInterval(this.timer);
+        user.gameCounter
+        user.highScore
+        user.totalScore
+        user.gameScore_arr
 
         // חישוב הציון הכי גבוה
         this.scores.push(this.score);  // הכנסת ציון המשחק הנוכחי למערך הציונים
@@ -258,7 +265,7 @@ class MemoryGame {
     
         // חישוב הציון הכולל
         let totalScore = this.scores.reduce((acc, score) => acc + score, 0); 
-        localStorage.setItem('totalScore', totalScore); 
+        localStorage.setItem('totalScore', this.totalScore); 
     
         // עדכון מספר המשחקים
         localStorage.setItem('gameCounter', this.gameCounter + 1);  

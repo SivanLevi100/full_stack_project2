@@ -5,32 +5,6 @@ const USERS_KEY = 'gameUsers';
 const CURRENT_USER_KEY = 'currentUser';
 let loginAttempts = {};
 
-/*
-//high Score
-localStorage.setItem('gameScores_arr',JSON.stringify([]));
-localStorage.setItem('highScore', 0); 
-//total Score
-localStorage.setItem('totalScore', 0); 
-//game Counter
-localStorage.setItem('gameCounter', 0); 
-*/
-
-// הגדרת הערכים הראשוניים אם לא קיימים ב-localStorage
-if (localStorage.getItem('gameScores_arr') === null) {
-    localStorage.setItem('gameScores_arr', JSON.stringify([]));  // מערך ציונים ריק
-}
-
-if (localStorage.getItem('highScore') === null) {
-    localStorage.setItem('highScore', 0);  // ציון גבוה 0
-}
-
-if (localStorage.getItem('totalScore') === null) {
-    localStorage.setItem('totalScore', 0);  // ציון כולל 0
-}
-
-if (localStorage.getItem('gameCounter') === null) {
-    localStorage.setItem('gameCounter', 0);  // מונה משחקים 0
-}
 
 
 // מחלקה למשתמש
@@ -43,11 +17,10 @@ class User {
         this.lastLogin = new Date();
         this.loginCount = 0;
 
-
-        /*this.gameScores_arr = [];
+        this.gameScores_arr = [];
         this.highScore = 0;
-        totalScore = 0;
-        gameCounter =0;*/
+        this.totalScore = 0;
+        this.gameCounter = 0;
         
 
     }
@@ -174,6 +147,8 @@ document.getElementById('registerForm').addEventListener('submit', (e) => {
 });
 
 
+
+/*סרגלי ניווט */
 /*
 document.addEventListener('DOMContentLoaded', function () {
     // Load the header and footer in parallel
