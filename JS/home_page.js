@@ -41,16 +41,6 @@ function displayStatistics(user) {
     document.getElementById('gamesPlayed').textContent = gamesPlayed;
     document.getElementById('totalScore').textContent = totalScore;
     document.getElementById('highScore').textContent = highScore;
-
-    // לוח מובילים (leaderboard)
-    const users = getUsers();
-    const otherUsers = Object.values(users).filter(u => u.email !== user.email);
-
-    const leaderboard = document.getElementById('leaderboard');
-    leaderboard.innerHTML = otherUsers
-        .sort((a, b) => (b.totalScore || 0) - (a.totalScore || 0)) // סידור לפי ניקוד יורד
-        .map(u => `<li>${u.name}: ${u.totalScore || 0} נקודות</li>`)
-        .join('');
 }
 
 // טיפול בהתנתקות

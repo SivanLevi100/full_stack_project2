@@ -17,6 +17,13 @@
             <div class="navbar-logo">
                 <h1>GAME CENTER</h1>
             </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#"><i class="fas fa-trophy"></i> games</a></li>
+                    <li><a href="#"><i class="fas fa-star"></i> score</a></li>
+                    <li><a href="#"><i class="fas fa-info-circle"></i> about us</a></li>
+                </ul>
+            </nav>
             <div class="user-info">
                 <span id="userName"></span>
                 <button id="logoutBtn">log out</button>
@@ -26,7 +33,7 @@
 
     <main class="main-container">
         <section class="user-stats">
-            <h2>My statistic board</h2>
+            <h2>My statistic</h2>
             <div class="stats-grid">
                 <div class="stat-card">
                     <h3>Games played</h3>
@@ -42,25 +49,37 @@
                 </div>
             </div>
         </section>
-        <section class="leaderboard">
-            <h2>Leaderboard</h2>
-            <ul id="leaderboard"></ul>
-        </section>
+        <a href="../HTML/statistics.html">
+            <div class="statistics-container">
+                <button class="statistics_button">Others Statistics</button>
+            </div>
+        </a>
+        
+        
         
 
         <section class="games-grid">
             <div class="games-container">
                 <a href="../HTML/game1.html" class="game-card">
-                   
-                    <h3>Number memory game</h3>
-                    <img src="https://tipis.co.il/cdn/shop/products/11.jpg?v=1686741740&width=1946" alt="משחק זיכרון המספרים" >
-                    <p>challenge your knowladge</p>
+                    <div class="image-container">
+                        <img src="https://tipis.co.il/cdn/shop/products/11.jpg?v=1686741740&width=1946" alt="משחק זיכרון המספרים">
+                        <div class="text-overlay">
+                            <h3>Number memory game</h3>
+                            <p>Challenge your knowledge</p>
+                        </div>
+                    </div>
                 </a>
-                <a href="../HTML/game2.html" class="game-card">
-                    <h3>Catch the Apple</h3>
-                    <p>challenge your knowladge</p>
-                    <img src="/api/placeholder/300/200" alt="משחק אנימציה">
+
+                <a href="../HTML/game1.html" class="game-card">
+                    <div class="image-container">
+                        <img src="../MEDIA/catch the apple.png" alt="catch the apple game">
+                        <div class="text-overlay">
+                            <h3>Catch the Apple</h3>
+                        </div>
+                    </div>
                 </a>
+                
+
                 <div class="game-card disabled">
                     <h3>...soon</h3>
                     <p>in development</p>

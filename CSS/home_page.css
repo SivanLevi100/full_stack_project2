@@ -9,6 +9,7 @@ body {
     background-size: cover; /* Ensures the image covers the entire screen */
     background-position: center; /* Centers the image */
     background-repeat: no-repeat; /* Prevents the image from repeating */
+    font-family: "Montserrat", serif;
 }
 
 /* סגנונות של הניווט */
@@ -33,6 +34,35 @@ body {
     font-size: 15px;
 }
 
+.main-nav{
+    font-weight: 300;
+}
+
+.main-nav ul {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+}
+
+.main-nav a {
+    /*color: var(--text-light);*/
+    color: #f3f7ff;
+    text-decoration: none;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: var(--transition);
+}
+
+.main-nav a:hover {
+    background: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+
 
 .user-info {
     display: flex;
@@ -54,7 +84,7 @@ body {
 }
 
 .user-info #logoutBtn:hover {
-    background-color: #f93f86;
+    background-color: #e47fa6;
 }
 
 /* סגנונות עיקריים */
@@ -64,6 +94,10 @@ body {
     margin: 120px;
     font-Weight: 500;
     font-family: "Montserrat", serif;
+}
+
+.main-container a{
+    text-decoration: none;
 }
 
 /* סטטיסטיקות משתמש */
@@ -114,6 +148,28 @@ body {
     color: #ffffff;
 }
 
+.statistics-container {
+    display: flex;
+    justify-content: center; /* Centers horizontally */
+    align-items: center; /* Centers vertically */
+   
+}
+
+.statistics_button{
+    background-color: #f93f86;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-family: "Montserrat", serif;
+}
+
+.statistics_button:hover {
+    background-color: #e47fa6;
+}
+
 /* רשת המשחקים */
 .games-grid {
     margin-top: 70px;
@@ -130,50 +186,54 @@ body {
 .games-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 40px;
+    gap: 60px;
     justify-content: center;
+   
 }
+
 
 .game-card {
-    background-color: #51c4d3;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    padding: 20px;
+    display: block;
     text-decoration: none;
-    font-Weight: 400;
-    color: inherit;
-    transition: transform 0.3s, box-shadow 0.3s;
+    color:#2c1361;
+    position: relative; /* הכרחי כדי לאפשר למיקום יחסי לפעול */
 }
 
-.game-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+.image-container {
+    position: relative; /* הופך את הקונטיינר לנקודת יחוס */
+    border-radius: 15px;
 }
 
-.game-card img {
-    width: 50%;
-    height: auto;
-    border-radius: 10px;
-    margin-bottom: 10px;
+.image-container img {
+    width: 100%; /* מבטיח שהתמונה תהיה רספונסיבית */
+    display: block;
+    border-radius: 15px;
 }
 
-.game-card h3 {
-    font-size: 20px;
-    color: #004085;
-    margin-bottom: 10px;
-    font-Weight: 600;
+.text-overlay {
+    position: absolute; /* ממקם את הטקסט מעל התמונה */
+    top: 50%; /* ממרכז את הטקסט אנכית */
+    left: 50%; /* ממרכז את הטקסט אופקית */
+    transform: translate(-50%, -50%); /* מיישר את הנקודה המרכזית */
+    color: #43166b; /* צבע טקסט */
+    text-align: center; /* מרכז טקסט */
+    background-color: rgba(130, 130, 130, 0.5); /* רקע חצי שקוף */
+    padding: 10px;
+    border-radius: 5px; /* פינות מעוגלות לטקסט */
 }
 
-.game-card p {
-    font-size: 16px;
-    color: #555;
-    
-}
 
 .game-card.disabled {
     pointer-events: none;
     opacity: 0.5;
+    background-color: #b5b3b3;
+    border-radius: 15px;
+    padding: 20px;
+}
+
+.game-card:hover {
+    transform: translateY(-5px);
+    transition: transform 0.3s ease-in-out;
 }
 
 /* תגובה למובייל */
