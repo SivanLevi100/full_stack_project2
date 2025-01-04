@@ -6,6 +6,9 @@ let score = 0;
 let timeLeft = 30; // Game duration in seconds
 let gameInterval, timerInterval;
 
+const currentUser = JSON.parse(localStorage.getItem('currentUser'));  
+document.getElementById('userName').textContent = `${currentUser.name}`;
+
 // פונקציות עזר
 function updateUserPoints(gameName, points) {
     const currentUser = JSON.parse(localStorage.getItem('currentUser'));

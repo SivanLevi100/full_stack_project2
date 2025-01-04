@@ -1,4 +1,7 @@
-//document.getElementById('userName').textContent = `Hello, ${user.name}`;
+
+const currentUser = JSON.parse(localStorage.getItem('currentUser'));  
+document.getElementById('userName').textContent = `${currentUser.name}`;
+
 class MemoryGame {
     constructor() {
         this.difficultySettings = {
@@ -26,23 +29,25 @@ class MemoryGame {
         this.selectedDifficulty = null;
 
         // Load counter and score from localStorage
-        this.loadGameStats();
+        //this.loadGameStats();
     }
     
     /*אתחול סטטיסטקות */
     loadGameStats() {
         // Load counter and score from localStorage
-        this.gameCounter = parseInt(localStorage.getItem(user.gameCounter)) || 0; //מספר משחקים
+       /* this.gameCounter = parseInt(localStorage.getItem(user.gameCounter)) || 0; //מספר משחקים
         this.highScore = parseInt(localStorage.getItem(user.highScore)) || 0;  //ציון הכי גבוה
         this.totalScore = parseInt(localStorage.getItem(user.totalScore)) || 0;  //כל הציונים
         this.scores = JSON.parse(localStorage.getItem(user.gameScore_arr)) || []; //מערך הציונים
+         */
+       
 
         // Display the counter and score
         /*document.getElementById('game-counter').textContent = `משחקים שוחקו: ${this.gameCounter}`;
         document.getElementById('high-score').textContent = `הניקוד הגבוה ביותר: ${this.highScore}`;*/
         
 
-        //current_User = JSON.parse(localStorage.getItem('currentUser'));
+        
         
     }
 
@@ -247,30 +252,41 @@ class MemoryGame {
         }, 1000);
     }
 
-
-
+    
     endGame(message) {
         this.gameActive = false;
         clearInterval(this.timer);
-        user.gameCounter
-        user.highScore
-        user.totalScore
-        user.gameScore_arr
 
+    
+        const currentUser = JSON.parse(localStorage.getItem('currentUser'));  
+        if (!currentUser) {
+            console.error("No user is currently logged in.");
+            return;
+        }
+        
+        // וודא ש- gameScore_arr קיים ומוגדר כ- מערך
+        if (!Array.isArray(currentUser.gameScore_arr)) {
+           currentUser.gameScore_arr = [];  // אם לא מערך, אתן לו מערך ריק
+}
         // חישוב הציון הכי גבוה
-        this.scores.push(this.score);  // הכנסת ציון המשחק הנוכחי למערך הציונים
-        localStorage.setItem('gameScores_arr', JSON.stringify(this.scores));  // שמירה של מערך הציונים
-        let highScore = Math.max(...this.scores);  // חישוב הציון הגבוה ביותר
-        localStorage.setItem('highScore', highScore);  // שמירה של הציון הכי גבוה
+        currentUser.gameScore_arr.push(this.score);  // הכנסת ציון המשחק הנוכחי למערך הציונים
+        let high_Score = Math.max(...currentUser.gameScore_arr);  // חישוב הציון הגבוה ביותר
+        currentUser.highScore = high_Score; // שמירה של הציון הכי גבוה
     
         // חישוב הציון הכולל
-        let totalScore = this.scores.reduce((acc, score) => acc + score, 0); 
-        localStorage.setItem('totalScore', this.totalScore); 
+        let total_Score = currentUser.gameScore_arr.reduce((acc, score) => acc + score, 0); 
+        currentUser.totalScore = total_Score;
     
         // עדכון מספר המשחקים
-        localStorage.setItem('gameCounter', this.gameCounter + 1);  
+        currentUser.gameCounter = currentUser.gameCounter + 1;
 
-    
+        //עדכון השדות של המשתמש הנוכחי localStorage
+        const users = JSON.parse(localStorage.getItem('gameUsers')) || {};
+        users[currentUser.email] = currentUser; 
+        localStorage.setItem('gameUsers', JSON.stringify(users));
+        localStorage.setItem('currentUser', JSON.stringify(currentUser));
+
+        
         // יצירת אלמנט הודעת הסיום
         const overlay = document.createElement('div');
         overlay.className = 'game-end-overlay';
@@ -309,6 +325,7 @@ class MemoryGame {
             document.getElementById('start-game').disabled = true;
         });
     }
+
     
 }
 

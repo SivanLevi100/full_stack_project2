@@ -1,3 +1,18 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    color: var(--accent-color);
+}
+
+
 /* סגנונות כלליים */
 body {
     margin: 0;
@@ -58,7 +73,7 @@ body {
 }
 
 .main-nav a:hover {
-    background: var(--primary-color);
+    /*background: var(--primary-color);*/
     transform: translateY(-2px);
 }
 
@@ -209,6 +224,12 @@ body {
     display: block;
     border-radius: 15px;
 }
+
+.game-card img {
+    width: 100%; /* התמונה תמלא את רוחב הקונטיינר */
+    height: auto; /* גובה התמונה יתואם לשמירה על יחס הפרופורציות */
+}
+
 
 .text-overlay {
     position: absolute; /* ממקם את הטקסט מעל התמונה */

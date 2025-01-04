@@ -47,7 +47,7 @@ function displayStatistics(user) {
 document.getElementById('logoutBtn').addEventListener('click', () => {
     localStorage.removeItem('currentUser');
     document.cookie = 'userSession=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
-    window.location.href = '../index.html';
+    window.location.href = '../HTML/index.html';
 });
 
 // אתחול הדף

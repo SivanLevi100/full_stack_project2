@@ -16,7 +16,6 @@ class User {
         this.scores = {};
         this.lastLogin = new Date();
         this.loginCount = 0;
-
         this.gameScores_arr = [];
         this.highScore = 0;
         this.totalScore = 0;
@@ -25,6 +24,8 @@ class User {
 
     }
 }
+
+
 
 // פונקציות עזר
 function getUsers() {
@@ -85,6 +86,8 @@ document.getElementById('switchToRegister').addEventListener('click', (e) => {
         registerForm.classList.remove('hidden'); // להציג את טופס ההרשמה
     }
 });
+
+
 
 
 
