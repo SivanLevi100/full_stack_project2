@@ -348,9 +348,88 @@ h1 {
 
 
 .user-info {
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    gap: 20px;
+    gap: 0.5rem;
     color: white;
     font-family: "Montserrat", serif;
+}
+
+/*עיצוב עבור הוראות המשחק*/
+/* עיצוב ספציפי להוראות המשחק */
+/* עיצוב ספציפי להוראות המשחק */
+.game-instructions {
+   
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(3, 3, 103, 0.2);
+    max-width: 600px;
+    margin: 30px auto;
+    border: 2px solid rgba(3, 3, 103, 0.2); /* הוספת מסגרת */
+}
+
+.game-instructions h4 {
+    text-align: center;
+    font-size: 1.8em; /* גודל גופן בינוני */
+    color: #34495e; /* צבע אפור כהה */
+    margin-bottom: 15px;
+    font-weight: 600; /* גופן מודגש אך לא עבה מדי */
+    text-transform: capitalize; /* הופך את המילים לראשי תיבות */
+    letter-spacing: 0.5px; /* מרווח קל בין האותיות */
+    border-bottom: 2px solid #3498db; /* קו תחתון כחול להדגשה */
+    padding-bottom: 10px; /* ריפוד בתחתית הכותרת */
+}
+
+.instruction {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    padding: 10px;
+    border-left: 5px solid #3498db; /* גבול בצבע כחול */
+    background-color: #ffffff;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+   
+}
+
+
+.instruction i {
+    font-size: 1.5em;
+    color: #3498db;
+    margin-right: 15px;
+  
+}
+
+.instruction p {
+    font-size: 1.1em;
+    color: #34495e;
+    line-height: 1.6;
+    text-align: left; /* יישור הטקסט לשמאל */
+    flex-grow: 1; /* להבטיח שהטקסט יתפשט לצד שמאל */
+}
+
+.instruction:hover {
+    transform: translateX(10px); /* הזזת הרשימה קצת ימינה בהנחה */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* עיצוב כפתור ה"שחק עכשיו" */
+.game-instructions button {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    font-size: 1.2em;
+    text-align: center;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.game-instructions button:hover {
+    background-color: #2980b9;
+    transform: scale(1.05);
 }

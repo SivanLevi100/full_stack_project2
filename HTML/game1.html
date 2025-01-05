@@ -36,13 +36,30 @@
         <h1>Number memory game</h1>
         <div id="game-area">
         <div class="setup-screen" id="setup-screen">
-            <h2>בחר רמת קושי</h2>
+            <h2>Select Difficulty</h2>
             <div class="difficulty-buttons">
-                <button class="difficulty-btn" data-difficulty="easy">קל</button>
-                <button class="difficulty-btn" data-difficulty="medium">בינוני</button>
-                <button class="difficulty-btn" data-difficulty="hard">קשה</button>
+                <button class="difficulty-btn" data-difficulty="hard">Hard</button>
+                <button class="difficulty-btn" data-difficulty="medium">Medium</button>
+                <button class="difficulty-btn" data-difficulty="easy">Easy</button>
             </div>
-            <button id="start-game" disabled>התחל משחק</button>
+            <button id="start-game" disabled>Start Game</button>
+
+            <div class="game-instructions">
+                <h4>Game Instructions</h4>
+                <div class="instruction">
+                    <p>.Find two cards whose numbers add up to the target number</p>
+                    <i class="fas fa-random"></i>
+                </div>
+                <div class="instruction">
+                    <p>.Flip cards one at a time to reveal their numbers</p>
+                    <i class="fas fa-hand-paper"></i>
+                </div>
+                <div class="instruction">
+                    <p>!Match correctly to win the round. Good luck</p>
+                    <i class="fas fa-trophy"></i>
+                </div>
+            </div>
+
         </div>
      
         <div class="game-container" id="game-container" style="display: none;">

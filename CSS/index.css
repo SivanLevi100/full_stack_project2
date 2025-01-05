@@ -60,10 +60,18 @@
     box-shadow: var(--box-shadow);
     max-width: 400px;
     margin: 0 auto;
+    
 }
 
 .form-group {
     margin-bottom: 1.5rem;
+    
+}
+
+input{
+    max-width: 400px; /* גודל מקסימלי */
+    margin: 0 auto; /* מרכז את האלמנט */
+    box-sizing: border-box; /* מבטיח שה-padding לא יחרוג */
 }
 
 .input-icon {

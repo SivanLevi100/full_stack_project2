@@ -89,9 +89,6 @@ document.getElementById('switchToRegister').addEventListener('click', (e) => {
 
 
 
-
-
-
 // טיפול בהתחברות
 document.getElementById('loginForm').addEventListener('submit', (e) => {
     e.preventDefault();
@@ -130,17 +127,38 @@ document.getElementById('registerForm').addEventListener('submit', (e) => {
     const email = document.getElementById('registerEmail').value;
     const password = document.getElementById('registerPassword').value;
     const confirmPassword = document.getElementById('confirmPassword').value;
+    
+     // Name validation
+     if (name.trim() === '') {
+        alert('Name cannot be empty');
+        return;
+    }
 
+    // Email validation
+    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+    if (!emailRegex.test(email)) {
+        alert('Please enter a valid email');
+        return;
+    }
+
+    // Password validation
+    if (password.length < 6) {
+        alert('Password must be at least 6 characters long');
+        return;
+    }
+
+    // Password confirmation
     if (password !== confirmPassword) {
-        alert('הסיסמאות אינן תואמות');
+        alert('Passwords do not match');
         return;
     }
 
     const users = getUsers();
     if (users[email]) {
-        alert('משתמש עם אימייל זה כבר קיים');
+        alert('A user with this email already exists');
         return;
     }
+
 
     const newUser = new User(name, email, password);
     users[email] = newUser;

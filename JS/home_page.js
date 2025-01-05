@@ -26,7 +26,7 @@ function getCurrentUser() {
 
 // עדכון פרטי משתמש בדף
 function updateUserInfo(user) {
-    document.getElementById('userName').textContent = `Hello, ${user.name}`;
+    document.getElementById('userName').textContent = `${user.name}`;
     displayStatistics(user);
 }
 

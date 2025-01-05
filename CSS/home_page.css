@@ -80,9 +80,9 @@ body {
 
 
 .user-info {
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    gap: 20px;
+    gap: 0.5rem;
     color: white;
     font-family: "Montserrat", serif;
 }
