@@ -4,13 +4,6 @@
     box-sizing: border-box;
 }
 
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    text-align: center;
-    color: var(--accent-color);
-}
 
 
 /* סגנונות כלליים */
@@ -18,89 +11,14 @@ body {
     margin: 0;
     background-color: #282346;
     color: #333;
-    line-height: 1.6;
-    direction: rtl;
-    background-image: url('../MEDIA/home_page_background4.png'); /* Path to your image */
+    background-image: url('../MEDIA/background.png'); /* Path to your image */
     background-size: cover; /* Ensures the image covers the entire screen */
     background-position: center; /* Centers the image */
     background-repeat: no-repeat; /* Prevents the image from repeating */
     font-family: "Montserrat", serif;
 }
 
-/* סגנונות של הניווט */
-.navbar {
-    background-color: #1a102f9b;
-    padding: 4px 0;
-    position: fixed; /* Keeps the navbar fixed at the top */
-    top: 0; /* Positions it at the top of the viewport */
-    width: 100%; /* Ensures the navbar spans the full width of the page */
-    z-index: 1000; /* Ensures it stays above other elements */
-}
 
-.navbar .container {
-    display: flex;
-    justify-content:space-between;
-}
-
-.navbar-logo {
-    margin-right: 0px; /* Adjust to control positioning */
-    font-family: "Orbitron", serif;
-    color: #47f6fc;
-    font-size: 15px;
-}
-
-.main-nav{
-    font-weight: 300;
-}
-
-.main-nav ul {
-    display: flex;
-    gap: 2rem;
-    list-style: none;
-}
-
-.main-nav a {
-    /*color: var(--text-light);*/
-    color: #f3f7ff;
-    text-decoration: none;
-    font-weight: 400;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    transition: var(--transition);
-}
-
-.main-nav a:hover {
-    /*background: var(--primary-color);*/
-    transform: translateY(-2px);
-}
-
-
-
-.user-info {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: white;
-    font-family: "Montserrat", serif;
-}
-
-.user-info #logoutBtn {
-    background-color: #f93f86;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    font-family: "Montserrat", serif;
-}
-
-.user-info #logoutBtn:hover {
-    background-color: #e47fa6;
-}
 
 /* סגנונות עיקריים */
 .main-container {
@@ -208,28 +126,25 @@ body {
 
 
 .game-card {
-    display: block;
+    display: flex;
     text-decoration: none;
     color:#2c1361;
     position: relative; /* הכרחי כדי לאפשר למיקום יחסי לפעול */
+    flex-direction: column; /* Align content vertically */
+    align-items: center;
 }
 
 .image-container {
     position: relative; /* הופך את הקונטיינר לנקודת יחוס */
     border-radius: 15px;
+    height: 90%; /* 70% of card height reserved for the image */
+    overflow: hidden;
 }
 
 .image-container img {
     width: 100%; /* מבטיח שהתמונה תהיה רספונסיבית */
-    display: block;
     border-radius: 15px;
 }
-
-.game-card img {
-    width: 100%; /* התמונה תמלא את רוחב הקונטיינר */
-    height: auto; /* גובה התמונה יתואם לשמירה על יחס הפרופורציות */
-}
-
 
 .text-overlay {
     position: absolute; /* ממקם את הטקסט מעל התמונה */
@@ -243,13 +158,15 @@ body {
     border-radius: 5px; /* פינות מעוגלות לטקסט */
 }
 
-
 .game-card.disabled {
     pointer-events: none;
-    opacity: 0.5;
-    background-color: #b5b3b3;
+}
+
+.game-card.disabled img{
+    width: 100%; /* מבטיח שהתמונה תהיה רספונסיבית */
+    display: block;
+    opacity: 0.3;
     border-radius: 15px;
-    padding: 20px;
 }
 
 .game-card:hover {

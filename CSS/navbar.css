@@ -1,0 +1,76 @@
+/* סגנונות של הניווט */
+.navbar {
+    background-color: #1a102f9b;
+    padding: 4px 0;
+    position: fixed; /* Keeps the navbar fixed at the top */
+    top: 0; /* Positions it at the top of the viewport */
+    width: 100%; /* Ensures the navbar spans the full width of the page */
+    z-index: 1000; /* Ensures it stays above other elements */
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    justify-content:space-between;
+}
+
+.navbar-logo {
+    margin-right: 0px; /* Adjust to control positioning */
+    font-family: "Orbitron", serif;
+    color: #47f6fc;
+    font-size: 15px;
+}
+
+.main-nav{
+    font-weight: 300;
+}
+
+.main-nav ul {
+    display: flex;
+    gap: 1rem;
+    list-style: none;
+}
+
+.main-nav a {
+    /*color: var(--text-light);*/
+    color: #f3f7ff;
+    text-decoration: none;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+}
+
+.main-nav a:hover {
+    /*background: var(--primary-color);*/
+    transform: translateY(-2px);
+}
+
+
+.user-info {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: white;
+    font-family: "Montserrat", serif;
+}
+
+.user-info #logoutBtn {
+    background-color: #f93f86;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-family: "Montserrat", serif;
+}
+
+.user-info #logoutBtn:hover {
+    background-color: #e47fa6;
+}

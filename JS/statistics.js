@@ -16,7 +16,7 @@ function populateLeaderboard() {
 
     // מילוי לוח המובילים
     leaderboard.innerHTML = sortedUsers
-        .map(user => `<li>${user.name}: ${user.totalScore || 0} נקודות</li>`)
+        .map(user => `<li>${user.name}: ${user.totalScore || 0} points</li>`)
         .join('');
 }
 

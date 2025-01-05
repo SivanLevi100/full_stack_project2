@@ -1,49 +1,36 @@
 /* Global Styles & Variables */
-:root {
-    --primary-color: #2196F3;
-    --secondary-color: #5783e8;
-    --accent-color: #47f6fc;
-    --background-color: rgba(233, 247, 253, 0.9);
-    --card-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    --transition-speed: 0.3s;
-}
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-
 body {
-    font-family: 'Segoe UI', Arial, sans-serif;
     margin: 0;
-    padding: 0;
-    min-height: 100vh;
-    background-image: url('../MEDIA/home_page_background4.png');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-
+    background-color: #282346;
+    color: #000000;
+    background-image: url('../MEDIA/background.png'); /* Path to your image */
+    background-size: cover; /* Ensures the image covers the entire screen */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    font-family: "Montserrat", serif;
 }
 
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    text-align: center;
-    color: var(--accent-color);
+.main-container {
+    text-decoration: none;
+    margin: 150px;
+    font-Weight: 500;
+    font-family: "Montserrat", serif;
+    align-items: center;
+    justify-content: center;
 }
 
-/* Title Styling */
-h1 {
-    color: var(--accent-color);
-    font-size: 3em;
-    text-align: center;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-    margin-bottom: 30px;
-    margin-top: 80px;
+
+.main-container h1{
+    padding-right: 490px;
 }
+
+
 
 /* Game Area */
 #game-area {
@@ -51,12 +38,10 @@ h1 {
     width: 800px;
     height: 600px;
     margin: 20px auto;
-    background-color: var(--background-color);
+    background-color:#64518e9b;
     border-radius: 20px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     overflow: hidden;
     backdrop-filter: blur(10px);
-    border: 2px solid rgba(255, 255, 255, 0.1);
 }
 
 /* Setup Screen */
@@ -67,65 +52,143 @@ h1 {
 }
 
 .setup-screen h2 {
-    color: #333;
-    font-size: 2em;
-    margin-bottom: 30px;
+    color: #47f6fc;
+    font-size: 1.5em;
+    font-weight: 600;
+    margin-bottom: 25px;
 }
 
 /* Difficulty Buttons */
 .difficulty-buttons {
     display: flex;
     justify-content: center;
-    gap: 20px;
-    margin: 30px 0;
-    
+    gap: 15px;
+    margin: 20px 0;
+    font-family: "Montserrat", serif;
 }
 
 .difficulty-btn {
-    padding: 12px 30px;
-    font-size: 1.2em;
+    padding: 9px 23px;
+    font-size: 1em;
+    font-weight: 500;
     border: none;
-    border-radius: 50px;
-    background: linear-gradient(145deg, var(--primary-color), #81b5f1);
-    color: white;
+    border-radius: 20px;
+    background:#725a9fb9;;
+    color: rgb(28, 22, 68);
     cursor: pointer;
     transition: all var(--transition-speed);
-    box-shadow: var(--card-shadow);
+    font-family: "Montserrat", serif;
 }
 
 .difficulty-btn:hover {
     transform: translateY(-3px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
 .difficulty-btn.selected {
-    background: linear-gradient(145deg, var(--secondary-color), #023466);
+    background: #2c1361c4;
     transform: scale(1.05);
 }
 
 /* Start Game Button */
 #start-game {
-    padding: 15px 40px;
-    font-size: 1.4em;
+    padding: 10px 20px;
+    font-size: 1em;
+    font-weight: 500;
     border: none;
-    border-radius: 50px;
-    background: linear-gradient(125deg, var(--secondary-color), #023466);
-    color: white;
+    border-radius: 20px;
+    background: #f93f86;
+    color: #ffffff;
     cursor: pointer;
     transition: all var(--transition-speed);
-    box-shadow: var(--card-shadow);
+    font-family: "Montserrat", serif;
 }
 
 #start-game:hover:not(:disabled) {
     transform: translateY(-3px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
 #start-game:disabled {
-    background: #cccccc;
+    background-color: white;
+    color: #2c1361c4;
     cursor: not-allowed;
     transform: none;
     box-shadow: none;
+}
+
+/*עיצוב עבור הוראות המשחק*/
+/* עיצוב ספציפי להוראות המשחק */
+/* עיצוב ספציפי להוראות המשחק */
+.game-instructions {
+    padding: 20px;
+    border-radius: 20px;
+    max-width: 600px;
+    margin: 50px auto;
+    background-color: rgba(220, 199, 253, 0.581);
+}
+
+.game-instructions h4 {
+    text-align: center;
+    font-size: 1.2em; /* גודל גופן בינוני */
+    color: #2c1361c4; /* צבע אפור כהה */
+    margin-bottom: 15px;
+    font-weight: 600; /* גופן מודגש אך לא עבה מדי */
+    text-transform: capitalize; /* הופך את המילים לראשי תיבות */
+    border-bottom: 2px solid #3498db; /* קו תחתון כחול להדגשה */
+    padding-bottom: 10px; /* ריפוד בתחתית הכותרת */
+}
+
+.instruction {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    padding: 10px;
+    border-left: 5px solid #3498db; /* גבול בצבע כחול */
+    background-color: #ffffff;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+   
+}
+
+
+.instruction i {
+    font-size: 1.5em;
+    color: #3498db;
+    margin-right: 15px;
+  
+}
+
+.instruction p {
+    font-size: 1.1em;
+    color: #34495e;
+    line-height: 1.6;
+    text-align: left; /* יישור הטקסט לשמאל */
+    flex-grow: 1; /* להבטיח שהטקסט יתפשט לצד שמאל */
+}
+
+.instruction:hover {
+    transform: translateX(10px); /* הזזת הרשימה קצת ימינה בהנחה */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* עיצוב כפתור ה"שחק עכשיו" */
+.game-instructions button {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    font-size: 1.2em;
+    text-align: center;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.game-instructions button:hover {
+    background-color: #2980b9;
+    transform: scale(1.05);
 }
 
 /* Game Container */
@@ -143,13 +206,12 @@ h1 {
     padding: 15px;
     background: rgba(255, 255, 255, 0.9);
     border-radius: 15px;
-    box-shadow: var(--card-shadow);
 }
 
 .game-info div {
     text-align: center;
     font-size: 1.2em;
-    color: #333;
+    color: #ffffff;
 }
 
 
@@ -295,141 +357,3 @@ h1 {
     transform: rotateY(180deg); /* מניעת אנימציית hover על קלפים שהותאמו */
 }
 
-
-
-/* סגנונות של הניווט */
-.navbar {
-    background-color: #1a102f9b;
-    padding: 4px 0;
-    position: fixed; /* Keeps the navbar fixed at the top */
-    top: 0; /* Positions it at the top of the viewport */
-    width: 100%; /* Ensures the navbar spans the full width of the page */
-    z-index: 1000; /* Ensures it stays above other elements */
-
-}
-
-.navbar .container {
-    display: flex;
-    justify-content:space-between;
-}
-
-.navbar-logo {
-    margin-right: 0px; /* Adjust to control positioning */
-    font-family: "Orbitron", serif;
-    color: #47f6fc;
-    font-size: 15px;
-}
-
-.main-nav{
-    font-weight: 300;
-}
-
-.main-nav ul {
-    display: flex;
-    gap: 2rem;
-    list-style: none;
-}
-
-.main-nav a {
-    color: #f3f7ff;
-    text-decoration: none;
-    font-weight: 400;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    transition: var(--transition);
-}
-
-.main-nav a:hover {
-    transform: translateY(-2px);
-}
-
-
-.user-info {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: white;
-    font-family: "Montserrat", serif;
-}
-
-/*עיצוב עבור הוראות המשחק*/
-/* עיצוב ספציפי להוראות המשחק */
-/* עיצוב ספציפי להוראות המשחק */
-.game-instructions {
-   
-    padding: 20px;
-    border-radius: 20px;
-    box-shadow: 0 8px 20px rgba(3, 3, 103, 0.2);
-    max-width: 600px;
-    margin: 30px auto;
-    border: 2px solid rgba(3, 3, 103, 0.2); /* הוספת מסגרת */
-}
-
-.game-instructions h4 {
-    text-align: center;
-    font-size: 1.8em; /* גודל גופן בינוני */
-    color: #34495e; /* צבע אפור כהה */
-    margin-bottom: 15px;
-    font-weight: 600; /* גופן מודגש אך לא עבה מדי */
-    text-transform: capitalize; /* הופך את המילים לראשי תיבות */
-    letter-spacing: 0.5px; /* מרווח קל בין האותיות */
-    border-bottom: 2px solid #3498db; /* קו תחתון כחול להדגשה */
-    padding-bottom: 10px; /* ריפוד בתחתית הכותרת */
-}
-
-.instruction {
-    display: flex;
-    align-items: center;
-    margin-bottom: 15px;
-    padding: 10px;
-    border-left: 5px solid #3498db; /* גבול בצבע כחול */
-    background-color: #ffffff;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-   
-}
-
-
-.instruction i {
-    font-size: 1.5em;
-    color: #3498db;
-    margin-right: 15px;
-  
-}
-
-.instruction p {
-    font-size: 1.1em;
-    color: #34495e;
-    line-height: 1.6;
-    text-align: left; /* יישור הטקסט לשמאל */
-    flex-grow: 1; /* להבטיח שהטקסט יתפשט לצד שמאל */
-}
-
-.instruction:hover {
-    transform: translateX(10px); /* הזזת הרשימה קצת ימינה בהנחה */
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-
-/* עיצוב כפתור ה"שחק עכשיו" */
-.game-instructions button {
-    display: block;
-    width: 100%;
-    padding: 12px;
-    font-size: 1.2em;
-    text-align: center;
-    background-color: #3498db;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    margin-top: 20px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.game-instructions button:hover {
-    background-color: #2980b9;
-    transform: scale(1.05);
-}

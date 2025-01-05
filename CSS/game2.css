@@ -5,24 +5,15 @@
     box-sizing: border-box;
 }
 
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    text-align: center;
-    color: var(--accent-color);
-}
-
-
 body {
     margin: 0;
-    font-family: "Michroma", serif;
     background-color: #f0f8ff;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-image: url('../MEDIA/home_page_background4.png'); /* Path to your image */
+    background-image: url('../MEDIA/background.png'); /* Path to your image */
+    font-family: "Montserrat", serif;
 }
 
 .game-container {
