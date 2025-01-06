@@ -9,7 +9,7 @@ let gameInterval, timerInterval;
 const currentUser = JSON.parse(localStorage.getItem('currentUser'));  
 document.getElementById('userName').textContent = `${currentUser.name}`;
 
-// פונקציות עזר
+// Updates the points for a user in a specific game 
 function updateUserPoints(gameName, points) {
     const currentUser = JSON.parse(localStorage.getItem('currentUser'));
     if (!currentUser) {
@@ -25,6 +25,7 @@ function updateUserPoints(gameName, points) {
     users[currentUser.email] = currentUser;
     localStorage.setItem('gameUsers', JSON.stringify(users));
     localStorage.setItem('currentUser', JSON.stringify(currentUser));
+
 }
 
 

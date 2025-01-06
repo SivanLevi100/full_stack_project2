@@ -1,6 +1,9 @@
 
 
 
+const currentUser = JSON.parse(localStorage.getItem('currentUser'));  
+document.getElementById('userName').textContent = `${currentUser.name}`;
+
 // שליפת משתמשים מ-localStorage
 function getUsers() {
     return JSON.parse(localStorage.getItem('gameUsers')) || {};

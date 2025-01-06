@@ -18,88 +18,67 @@ class MemoryGame {
                 time: 60
             }
         };
-        
         this.initializeSetup();
-
     }
 
-    /*פונקצית אתחול */
+   /*Initialization function */
     initializeSetup() {
         this.setupEventListeners();
         this.selectedDifficulty = null;
-
-        // Load counter and score from localStorage
-        //this.loadGameStats();
     }
     
-    /*אתחול סטטיסטקות */
-    loadGameStats() {
-        // Load counter and score from localStorage
-       /* this.gameCounter = parseInt(localStorage.getItem(user.gameCounter)) || 0; //מספר משחקים
-        this.highScore = parseInt(localStorage.getItem(user.highScore)) || 0;  //ציון הכי גבוה
-        this.totalScore = parseInt(localStorage.getItem(user.totalScore)) || 0;  //כל הציונים
-        this.scores = JSON.parse(localStorage.getItem(user.gameScore_arr)) || []; //מערך הציונים
-         */
-       
-
-        // Display the counter and score
-        /*document.getElementById('game-counter').textContent = `משחקים שוחקו: ${this.gameCounter}`;
-        document.getElementById('high-score').textContent = `הניקוד הגבוה ביותר: ${this.highScore}`;*/
-        
-
-        
-        
-    }
-
+    /*Sets up event listeners for the game.*/
     setupEventListeners() {
-        // מאזינים לכפתורי רמת הקושי
+        //Listening to the difficulty level buttons
         const difficultyButtons = document.querySelectorAll('.difficulty-btn');
         difficultyButtons.forEach(button => {
             button.addEventListener('click', () => this.selectDifficulty(button));
         });
 
-        // מאזין לכפתור התחלת המשחק
+        //Listening to the start game button
         const startButton = document.getElementById('start-game');
         startButton.addEventListener('click', () => this.startNewGame());
     }
 
+    /*Handles the selection of a difficulty level. */
     selectDifficulty(button) {
-        // הסרת הבחירה הקודמת
+        // Remove previous selection
         document.querySelectorAll('.difficulty-btn').forEach(btn => {
             btn.classList.remove('selected');
         });
 
-        // בחירת רמת הקושי החדשה
+        // Choosing a new difficulty level
         button.classList.add('selected');
         this.selectedDifficulty = button.dataset.difficulty;
         
-        // הפעלת כפתור ההתחלה
+        // Activating the start button
         document.getElementById('start-game').disabled = false;
     }
 
+    /*Starts a new game session. */
     startNewGame() {
         if (!this.selectedDifficulty) return;
 
-        // הסתרת מסך ההגדרות והצגת המשחק
+        // Hiding the settings screen and showing the game
         document.getElementById('setup-screen').style.display = 'none';
         document.getElementById('game-container').style.display = 'block';
 
-        // אתחול משתני המשחק
+        // Initializing game variables
         this.cards = [];
         this.score = 0;
         this.flippedCards = [];
         this.matchedPairs = new Set();
         this.gameActive = true;
 
-        // הגדרת זמן לפי רמת הקושי
+        // Setting time according to difficulty level
         this.timeLeft = this.difficultySettings[this.selectedDifficulty].time;
 
-        // בחירת מספר מטרה רנדומלי לפי רמת הקושי
+        // Selecting a random target number according to difficulty level
         const range = this.difficultySettings[this.selectedDifficulty].targetRange;
         this.targetNumber = Math.floor(Math.random() * (range.max - range.min + 1)) + range.min;
 
-        // עדכון התצוגה
-        document.getElementById('current-difficulty').textContent = this.getDifficultyInHebrew();
+        // Display update
+        document.getElementById('current-difficulty').textContent = this.getDifficulty();
         document.getElementById('target-number').textContent = this.targetNumber;
         document.getElementById('score').textContent = '0';
         document.getElementById('timer').textContent = this.timeLeft;
@@ -108,19 +87,21 @@ class MemoryGame {
         this.startTimer();
     }
 
-    getDifficultyInHebrew() {
+    /*Returns the selected difficulty level as a string. */
+    getDifficulty() {
         const difficulties = {
-            easy: 'קל',
-            medium: 'בינוני',
-            hard: 'קשה'
+            easy: 'easy',
+            medium: 'medium',
+            hard: 'hard'
         };
         return difficulties[this.selectedDifficulty];
     }
-
+    
+    /*Initializes the game by preparing the cards and setting up the game state. */
     initializeGame() {
         const numbers = [];
         for(let i = 1; i <= 8; i++) {
-            // יצירת מספרים שסכומם שווה למספר המטרה
+            // Generating numbers whose sum equals the target number
             const num1 = i;
             const num2 = this.targetNumber - i;
             if (num2 > 0 && num1 !== num2) {
@@ -134,36 +115,9 @@ class MemoryGame {
         this.gameActive = true;
         
         this.renderBoard();
-        this.createEndGameMessage();
     }
-
-    createEndGameMessage() {
-        const gameInfo = document.querySelector('.game-info');
-        let endMessage = document.getElementById('end-message');
-        
-        if (!endMessage) {
-            endMessage = document.createElement('div');
-            endMessage.id = 'end-message';
-            endMessage.style.display = 'none';
-            gameInfo.appendChild(endMessage);
-        }
-
-        let restartButton = document.getElementById('restart-button');
-        if (!restartButton) {
-            restartButton = document.createElement('button');
-            restartButton.id = 'restart-button';
-            restartButton.textContent = 'משחק חדש';
-            restartButton.style.display = 'none';
-            restartButton.addEventListener('click', () => {
-                document.getElementById('setup-screen').style.display = 'block';
-                document.getElementById('game-container').style.display = 'none';
-                document.getElementById('end-message').style.display = 'none';
-                restartButton.style.display = 'none';
-            });
-            gameInfo.appendChild(restartButton);
-        }
-    }
-
+ 
+    /*Renders the game board with cards for the current game. */    
     renderBoard() {
         const board = document.getElementById('board');
         board.innerHTML = '';
@@ -178,6 +132,7 @@ class MemoryGame {
         });
     }
 
+    /*Handles the logic for flipping a card on the game board. */
     flipCard(index) {
         if (!this.gameActive || this.flippedCards.length === 2) return;
         
@@ -195,6 +150,7 @@ class MemoryGame {
         }
     }
 
+    /*Checks if the two flipped cards for a valid pair that matches the target number. */
     checkMatch() {
         const [card1, card2] = this.flippedCards;
         const sum = card1.value + card2.value;
@@ -203,9 +159,8 @@ class MemoryGame {
             this.score += 10;
           
             document.getElementById('score').textContent = this.score;
-
             
-            // הוספת הקלאס החדש לקלפים שהותאמו
+            // Adding the new class to the adapted cards
             const card1Element = document.querySelector(`[data-index="${card1.index}"]`);
             const card2Element = document.querySelector(`[data-index="${card2.index}"]`);
             
@@ -228,17 +183,14 @@ class MemoryGame {
             card2Element.style.transform = 'scaleX(-1)';
         }
         
-
         this.flippedCards = [];
         
         if (this.matchedPairs.size === this.cards.length) {
-            this.endGame('ניצחת! ');
+            this.endGame('!You won');
         }
-
-        
-        
     }
 
+    /*Starts the game timer and updates the countdown every second. */
     startTimer() {
         if (this.timer) clearInterval(this.timer);
         
@@ -247,87 +199,85 @@ class MemoryGame {
             document.getElementById('timer').textContent = this.timeLeft;
             
             if (this.timeLeft <= 0) {
-                this.endGame('נגמר הזמן! ');
+                this.endGame("!Time's Up");
             }
         }, 1000);
     }
 
-    
+    /*Ends the game, displays the final score, and handles user score  */
     endGame(message) {
         this.gameActive = false;
         clearInterval(this.timer);
-
     
         const currentUser = JSON.parse(localStorage.getItem('currentUser'));  
         if (!currentUser) {
             console.error("No user is currently logged in.");
             return;
         }
-        
-        // וודא ש- gameScore_arr קיים ומוגדר כ- מערך
-        if (!Array.isArray(currentUser.gameScore_arr)) {
-           currentUser.gameScore_arr = [];  // אם לא מערך, אתן לו מערך ריק
-}
-        // חישוב הציון הכי גבוה
-        currentUser.gameScore_arr.push(this.score);  // הכנסת ציון המשחק הנוכחי למערך הציונים
-        let high_Score = Math.max(...currentUser.gameScore_arr);  // חישוב הציון הגבוה ביותר
-        currentUser.highScore = high_Score; // שמירה של הציון הכי גבוה
     
-        // חישוב הציון הכולל
+        // Ensure `gameScore_arr` exists and is defined as an array
+        if (!Array.isArray(currentUser.gameScore_arr)) {
+           currentUser.gameScore_arr = [];  // If not an array, initialize as an empty array
+        }
+    
+        // Calculate the highest score
+        currentUser.gameScore_arr.push(this.score);  // Add the current game score to the score array
+        let high_Score = Math.max(...currentUser.gameScore_arr);  // Calculate the highest score
+        currentUser.highScore = high_Score; // Store the highest score
+    
+        // Calculate the total score
         let total_Score = currentUser.gameScore_arr.reduce((acc, score) => acc + score, 0); 
         currentUser.totalScore = total_Score;
     
-        // עדכון מספר המשחקים
+        // Update the game count
         currentUser.gameCounter = currentUser.gameCounter + 1;
-
-        //עדכון השדות של המשתמש הנוכחי localStorage
+    
+        // Update the current user fields in `localStorage`
         const users = JSON.parse(localStorage.getItem('gameUsers')) || {};
         users[currentUser.email] = currentUser; 
         localStorage.setItem('gameUsers', JSON.stringify(users));
         localStorage.setItem('currentUser', JSON.stringify(currentUser));
-
-        
-        // יצירת אלמנט הודעת הסיום
+    
+        // Create end game message overlay
         const overlay = document.createElement('div');
         overlay.className = 'game-end-overlay';
     
         overlay.innerHTML = `
             <h2>${message}</h2>
-            <div class="score">הניקוד הסופי שלך: ${this.score}</div>
-            <button id="new-game-btn">משחק חדש</button>
-        `;
+            <div class="score">Your final score: ${this.score}</div>
+            <button id="new-game-btn">New game</button>
+        `;  
     
-        // הוספת ההודעה ללוח המשחק
+        // Add the end game overlay to the game container
         const gameContainer = document.querySelector('.game-container');
         gameContainer.appendChild(overlay);
     
-        // הוספת מאזין לחיצה לכפתור המשחק החדש
+        // Add event listener for the "New game" button
         document.getElementById('new-game-btn').addEventListener('click', () => {
-            // מחיקת המעטפת של סיום המשחק
+            // Remove the end game overlay
             overlay.remove();
     
-            // איפוס אלמנטים ובחירת רמת קושי מחדש
+            // Reset the setup screen and choose difficulty again
             document.getElementById('setup-screen').style.display = 'block';
             document.getElementById('game-container').style.display = 'none';
     
-            // אפס את משתני המשחק
+            // Reset game variables
             this.selectedDifficulty = null;
             document.querySelectorAll('.difficulty-btn').forEach(btn => {
                 btn.classList.remove('selected');
             });
     
-            // איפוס זמן ניקוד
+            // Reset score and timer display
             this.score = 0;
             document.getElementById('score').textContent = this.score;
             document.getElementById('timer').textContent = '';
     
-            // איפוס כפתור התחלת משחק
+            // Disable start game button
             document.getElementById('start-game').disabled = true;
         });
     }
 
-    
-}
+  }
 
-// יצירת המשחק
+// Create the game
 new MemoryGame();
