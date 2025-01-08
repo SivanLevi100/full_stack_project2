@@ -1,4 +1,5 @@
-// בדיקת התחברות
+
+/*Verifies if the current user is logged in by checking the `currentUser` key in localStorage.*/
 function checkAuth() {
     const currentUser = JSON.parse(localStorage.getItem('currentUser'));
     if (!currentUser) {
@@ -8,49 +9,51 @@ function checkAuth() {
     return currentUser;
 }
 
-
+/*Fetches the list of users from localStorage.*/
 function getUsers() {
     const users = localStorage.getItem('gameUsers');
     return users ? JSON.parse(users) : {};
 }
 
+/*Saves the provided users object to localStorage.*/
 function saveUsers(users) {
     localStorage.setItem('gameUsers', JSON.stringify(users));
 }
 
-
+/*Fetches the current logged-in user from localStorage. */
 function getCurrentUser() {
     const user = localStorage.getItem('currentUser');
     return user ? JSON.parse(user) : null;
 }
 
-// עדכון פרטי משתמש בדף
+/*Updates the user information displayed on the page.*/
 function updateUserInfo(user) {
     document.getElementById('userName').textContent = `${user.name}`;
     displayStatistics(user);
 }
 
-// עדכון סטטיסטיקות
+/*Calculates and displays user statistics on the page.*/
 function displayStatistics(user) {
-    // חישוב סטטיסטיקות למשתמש הנוכחי
+    // Calculate statistics for the current user
     const gamesPlayed = user.gameCounter || 0;
     const totalScore = user.totalScore || 0;
-    const highScore = user.highScore || 0;
+    const highScore = Math.max(user.highScore_1 || 0, user.highScore_2 || 0);
 
-    // עדכון אלמנטים ב-HTML
+    // Update HTML elements with statistics
     document.getElementById('gamesPlayed').textContent = gamesPlayed;
     document.getElementById('totalScore').textContent = totalScore;
     document.getElementById('highScore').textContent = highScore;
 }
 
-// טיפול בהתנתקות
+/*Handles user logout by removing session data from localStorage and cookies, then redirects to the login page.*/
 document.getElementById('logoutBtn').addEventListener('click', () => {
     localStorage.removeItem('currentUser');
     document.cookie = 'userSession=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
     window.location.href = '../HTML/index.html';
 });
 
-// אתחול הדף
+
+/*Initialize Page */
 document.addEventListener('DOMContentLoaded', () => {
     const currentUser = checkAuth();
     if (currentUser) {

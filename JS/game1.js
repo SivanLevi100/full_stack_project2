@@ -215,20 +215,21 @@ class MemoryGame {
             return;
         }
     
-        // Ensure `gameScore_arr` exists and is defined as an array
-        if (!Array.isArray(currentUser.gameScore_arr)) {
-           currentUser.gameScore_arr = [];  // If not an array, initialize as an empty array
+        // Ensure `game1_Scores_arr` exists and is defined as an array
+        if (!Array.isArray(currentUser.game1_Scores_arr)) {
+           currentUser.game1_Scores_arr = [];  // If not an array, initialize as an empty array
         }
     
         // Calculate the highest score
-        currentUser.gameScore_arr.push(this.score);  // Add the current game score to the score array
-        let high_Score = Math.max(...currentUser.gameScore_arr);  // Calculate the highest score
-        currentUser.highScore = high_Score; // Store the highest score
+        currentUser.game1_Scores_arr.push(this.score);  // Add the current game score to the score array
+        let high_Score = Math.max(...currentUser.game1_Scores_arr);  // Calculate the highest score
+        currentUser.highScore_1 = high_Score; // Store the highest score
     
         // Calculate the total score
-        let total_Score = currentUser.gameScore_arr.reduce((acc, score) => acc + score, 0); 
-        currentUser.totalScore = total_Score;
-    
+        let total_Score_1 = currentUser.game1_Scores_arr.reduce((acc, score) => acc + score, 0); 
+        let total_Score_2 = currentUser.game2_Scores_arr.reduce((acc, score) => acc + score, 0); 
+        currentUser.totalScore = total_Score_1 + total_Score_2;
+
         // Update the game count
         currentUser.gameCounter = currentUser.gameCounter + 1;
     

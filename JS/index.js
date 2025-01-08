@@ -13,18 +13,18 @@ class User {
         this.name = name;
         this.email = email;
         this.password = password;
-        this.scores = {};
         this.lastLogin = new Date();
         this.loginCount = 0;
-        this.gameScores_arr = [];
-        this.highScore = 0;
+        this.game1_Scores_arr = [];
+        this.game2_Scores_arr = [];
+        this.highScore_1 = 0;
+        this.highScore_2 = 0;
         this.totalScore = 0;
         this.gameCounter = 0;
         
 
     }
 }
-
 
 
 // פונקציות עזר

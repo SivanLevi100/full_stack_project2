@@ -10,19 +10,34 @@ const currentUser = JSON.parse(localStorage.getItem('currentUser'));
 document.getElementById('userName').textContent = `${currentUser.name}`;
 
 // Updates the points for a user in a specific game 
-function updateUserPoints(gameName, points) {
-    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+function updateUserPoints(points) {
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));  
     if (!currentUser) {
         console.error("No user is currently logged in.");
         return;
     }
 
-    currentUser.scores[gameName] = (currentUser.scores[gameName] || 0) + points;
-    currentUser.totalScore = (currentUser.totalScore || 0) + points;
-    currentUser.gameCounter = (currentUser.gameCounter || 0) + 1;
+    // Ensure `game2_Scores_arr` exists and is defined as an array
+    if (!Array.isArray(currentUser.game2_Scores_arr)) {
+       currentUser.game2_Scores_arr = [];  // If not an array, initialize as an empty array
+    }
 
+    // Calculate the highest score
+    currentUser.game2_Scores_arr.push(points);  // Add the current game score to the score array
+    let high_Score = Math.max(...currentUser.game2_Scores_arr);  // Calculate the highest score
+    currentUser.highScore_2 = high_Score; // Store the highest score
+
+    // Calculate the total score
+    let total_Score_1 = currentUser.game1_Scores_arr.reduce((acc, score) => acc + score, 0); 
+    let total_Score_2 = currentUser.game2_Scores_arr.reduce((acc, score) => acc + score, 0); 
+    currentUser.totalScore = total_Score_1 + total_Score_2;
+
+    // Update the game count
+    currentUser.gameCounter = currentUser.gameCounter + 1;
+
+    // Update the current user fields in `localStorage`
     const users = JSON.parse(localStorage.getItem('gameUsers')) || {};
-    users[currentUser.email] = currentUser;
+    users[currentUser.email] = currentUser; 
     localStorage.setItem('gameUsers', JSON.stringify(users));
     localStorage.setItem('currentUser', JSON.stringify(currentUser));
 
@@ -110,7 +125,7 @@ function endGame() {
     gameOverMessage.style.display = "flex"; // Show the game-over message
 
     // Update total points in the database
-    updateUserPoints('Catch the Apple', score); // Update total score at the end of the game
+    updateUserPoints(score); // Update total score at the end of the game
 }
 
 // Restart button functionality

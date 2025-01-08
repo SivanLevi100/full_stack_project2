@@ -1,4 +1,4 @@
-/* סגנונות של הניווט */
+/* Navigation styles */
 .navbar {
     background-color: #1a102f9b;
     padding: 4px 0;
@@ -23,6 +23,29 @@
     color: #47f6fc;
     font-size: 13px;
 }
+
+.navbar-logo a {
+    text-decoration: none;
+}
+
+.navbar-logo h1{
+    color: #47f6fc;
+}
+
+.navbar-logo.animate h1 {
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.navbar-logo.animate h1:hover {
+    transform: scale(1.03);
+    color: #f93f86; 
+}
+
+.navbar-logo h1 i {
+    margin-left: 10px; 
+    transition: none;  /* No animation on the icon */
+}
+
 
 .main-nav{
     font-weight: 300;
