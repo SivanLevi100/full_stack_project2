@@ -33,7 +33,7 @@ difficultyButtons.forEach((button) => {
     });
 });
 
-
+/*update the score in the local storage*/
 function updateUserPoints(points) {
     const currentUser = JSON.parse(localStorage.getItem('currentUser'));  
     if (!currentUser) {
