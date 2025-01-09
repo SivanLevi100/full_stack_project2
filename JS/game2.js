@@ -1,15 +1,39 @@
 const gameArea = document.getElementById("game-area");
 const scoreElement = document.getElementById("score");
 const timerElement = document.getElementById("timer");
-const gameOverMessage = document.createElement("div"); // Create the game-over message container
-let score = 0;
-let timeLeft = 30; // Game duration in seconds
-let gameInterval, timerInterval;
+const difficultyButtons = document.querySelectorAll(".difficulty-button");
+const difficultySelection = document.getElementById("difficulty-selection");
+const secondsScore = document.querySelector(".seconds_score");
 
 const currentUser = JSON.parse(localStorage.getItem('currentUser'));  
 document.getElementById('userName').textContent = `${currentUser.name}`;
 
-// Updates the points for a user in a specific game 
+let score = 0;
+let timeLeft = 30;
+let gameInterval, timerInterval;
+let fallSpeedMultiplier = 1; // Default fall speed multiplier
+
+// Initialize the game-over message
+const gameOverMessage = document.createElement("div");
+gameOverMessage.id = "game-over-message";
+gameOverMessage.style.display = "none"; // Hide initially
+gameOverMessage.innerHTML = `
+    <h2>!Time's up</h2>
+    <p>your score: <span id="final-score"></span></p>
+    <button id="restart-button">play again</button>
+`;
+document.getElementById("game-area").appendChild(gameOverMessage); // Append to the game area
+
+// Add event listeners to difficulty buttons
+difficultyButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+        const difficulty = button.getAttribute("data-difficulty");
+        setDifficulty(difficulty);
+        startGame();
+    });
+});
+
+
 function updateUserPoints(points) {
     const currentUser = JSON.parse(localStorage.getItem('currentUser'));  
     if (!currentUser) {
@@ -44,15 +68,16 @@ function updateUserPoints(points) {
 }
 
 
-// Initialize the game-over message
-gameOverMessage.id = "game-over-message";
-gameOverMessage.style.display = "none"; // Hide initially
-gameOverMessage.innerHTML = `
-    <h2>Time's Up!</h2>
-    <p>Your score: <span id="final-score"></span></p>
-    <button id="restart-button">Play Again</button>
-`;
-document.body.appendChild(gameOverMessage); // Add to the body
+// Adjust fall speed multiplier based on difficulty
+function setDifficulty(difficulty) {
+    if (difficulty === "low") {
+        fallSpeedMultiplier = 0.5; // Slow falling speed
+    } else if (difficulty === "medium") {
+        fallSpeedMultiplier = 1; // Normal falling speed
+    } else if (difficulty === "high") {
+        fallSpeedMultiplier = 1.5; // Fast falling speed
+    }
+}
 
 function createFallingObject() {
     const object = document.createElement("div");
@@ -68,7 +93,7 @@ function createFallingObject() {
     gameArea.appendChild(object);
 
     let position = 0;
-    const fallSpeed = Math.random() * 3 + 2; // Random fall speed
+    const fallSpeed = (Math.random() * 3 + 2) * fallSpeedMultiplier; // Adjust speed based on difficulty
 
     // Animate the object
     const fallInterval = setInterval(() => {
@@ -103,13 +128,20 @@ function startTimer() {
 }
 
 function startGame() {
+    // Hide the difficulty selector and show the game UI
+    difficultySelection.style.display = "none";
+    secondsScore.style.display = "flex";
+
     // Reset game state
     score = 0;
     timeLeft = 30;
     scoreElement.textContent = score;
     timerElement.textContent = timeLeft;
-    gameOverMessage.style.display = "none"; // Hide the game-over message
     gameArea.innerHTML = ""; // Clear the game area
+    gameArea.appendChild(gameOverMessage); // Ensure game-over message stays in the DOM
+    gameOverMessage.style.display = "none"; // Hide the game-over message
+    gameArea.appendChild(difficultySelection); // Add difficulty selector for persistence
+    
 
     // Start generating falling objects
     gameInterval = setInterval(createFallingObject, 1000);
@@ -118,22 +150,25 @@ function startGame() {
     startTimer();
 }
 
+
+
 function endGame() {
+    const currentUser = JSON.parse(localStorage.getItem('currentUser')); 
+
     clearInterval(gameInterval); // Stop creating objects
-    gameArea.innerHTML = ""; // Clear remaining objects
-    document.getElementById("final-score").textContent = score; // Update the final score in the overlay
+    gameArea.querySelectorAll(".falling-object").forEach((obj) => obj.remove()); // Remove only falling objects
+
+    document.getElementById("final-score").textContent = score; // Update the final score
     gameOverMessage.style.display = "flex"; // Show the game-over message
 
-    // Update total points in the database
     updateUserPoints(score); // Update total score at the end of the game
+
+    // Reset UI for new game
+    const restartButton = document.getElementById("restart-button");
+    restartButton.onclick = () => {
+        gameOverMessage.style.display = "none"; // Hide the game-over message
+        difficultySelection.style.display = "flex"; // Show difficulty selection
+        secondsScore.style.display = "none"; // Hide the timer and score display
+    };
 }
 
-// Restart button functionality
-document.addEventListener("click", (e) => {
-    if (e.target.id === "restart-button") {
-        startGame(); // Restart the game
-    }
-});
-
-// Start the game initially
-startGame();

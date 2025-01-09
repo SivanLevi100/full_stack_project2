@@ -1,3 +1,5 @@
+const currentUser = JSON.parse(localStorage.getItem('currentUser'));  
+document.getElementById('userName').textContent = `${currentUser.name}`;
 
 /*Verifies if the current user is logged in by checking the `currentUser` key in localStorage.*/
 function checkAuth() {

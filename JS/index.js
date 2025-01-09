@@ -6,7 +6,6 @@ const CURRENT_USER_KEY = 'currentUser';
 let loginAttempts = {};
 
 
-
 // מחלקה למשתמש
 class User {
     constructor(name, email, password) {

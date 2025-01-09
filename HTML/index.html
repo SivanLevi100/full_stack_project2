@@ -14,10 +14,9 @@
 
 <body>
     <!-- Navigation Bar -->
-    <nav class="navbar">
-        <div class="nav-container">
-        
-            <div class="navbar-logo" style="justify-content: left;">
+    <nav class="navbar" style="display: flex; align-items: center; justify-content: space-between;">
+        <div class="nav-container" style="display: flex; align-items: center;">
+            <div class="navbar-logo" style="justify-content: flex-start; text-align: left; display: flex; align-items: center; margin-right: auto;">
                 <h1>GAME CENTER  <i class="fas fa-gamepad"></i></h1>
             </div>
         </div>
@@ -30,10 +29,10 @@
             <div class="auth-header">
                 <div class="tabs">
                     <button class="tab active" data-tab="login">
-                        <i class="fas fa-sign-in-alt"></i> התחברות
+                        <i class="fas fa-sign-in-alt"></i> log in
                     </button>
                     <button class="tab hidden-tab" data-tab="register">
-                        <i class="fas fa-user-plus"></i> הרשמה
+                        <i class="fas fa-user-plus"></i> sign in
                     </button>
                 </div>
             </div>
@@ -42,22 +41,22 @@
                 <div class="form-group">
                     <div class="input-icon">
                         <i class="fas fa-envelope"></i>
-                        <input type="email" id="loginEmail" placeholder="אימייל" required>
+                        <input type="email" id="loginEmail" placeholder="email" required>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="input-icon">
                         <i class="fas fa-lock"></i>
-                        <input type="password" id="loginPassword" placeholder="סיסמה" required>
+                        <input type="password" id="loginPassword" placeholder="password" required>
                     </div>
                 </div>
                 <button type="submit" class="btn-submit">
-                    <span>התחבר לאתר</span>
+                    <span> !GO</span>
                     <i class="fas fa-arrow-left"></i>
                 </button>
                 <p class="switch-form">
-                    עדיין אין לך חשבון? 
-                    <a href="#" id="switchToRegister">הירשם עכשיו</a>
+                    Don’t you have an account? 
+                    <a href="#" id="switchToRegister">Sign up </a>
                 </p>
             </form>
 
@@ -65,60 +64,35 @@
                 <div class="form-group">
                     <div class="input-icon">
                         <i class="fas fa-user"></i>
-                        <input type="text" id="registerName" placeholder="שם משתמש" required>
+                        <input type="text" id="registerName" placeholder="User name" required>
                     </div>
                 </div>
                 <div class="form-group">   
                     <div class="input-icon">
                         <i class="fas fa-envelope"></i>
-                        <input type="email" id="registerEmail" placeholder="אימייל" required>
+                        <input type="email" id="registerEmail" placeholder="email" required>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="input-icon">
                         <i class="fas fa-lock"></i>
-                        <input type="password" id="registerPassword" placeholder="סיסמה" required>
+                        <input type="password" id="registerPassword" placeholder="password" required>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="input-icon">
                         <i class="fas fa-check-circle"></i>
-                        <input type="password" id="confirmPassword" placeholder="אימות סיסמה" required>
+                        <input type="password" id="confirmPassword" placeholder="verify password" required>
                     </div>
                 </div>
                 <button type="submit" class="btn-submit">
-                    <span>צור חשבון</span>
+                    <span>Create account</span>
                     <i class="fas fa-arrow-left"></i>
                 </button>
             </form>
         </div>
     </main>
 
-    <footer class="main-footer">
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>עקבו אחרינו</h3>
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-facebook"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-discord"></i></a>
-                </div>
-            </div>
-            <div class="footer-section">
-                <h3>קישורים מהירים</h3>
-                <ul>
-                    <li><a href="#">תנאי שימוש</a></li>
-                    <li><a href="#">מדיניות פרטיות</a></li>
-                    <li><a href="#">עזרה</a></li>
-                    <li><a href="#">צור קשר</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2025 Game Center. כל הזכויות שמורות.</p>
-        </div>
-    </footer>
 
     <script src="../JS/index.js"></script>
 </body>

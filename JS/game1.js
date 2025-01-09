@@ -1,6 +1,12 @@
-
 const currentUser = JSON.parse(localStorage.getItem('currentUser'));  
 document.getElementById('userName').textContent = `${currentUser.name}`;
+
+/*Handles user logout by removing session data from localStorage and cookies, then redirects to the login page.*/
+document.getElementById('logoutBtn').addEventListener('click', () => {
+    localStorage.removeItem('currentUser');
+    document.cookie = 'userSession=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+    window.location.href = '../HTML/index.html';
+});
 
 class MemoryGame {
     constructor() {

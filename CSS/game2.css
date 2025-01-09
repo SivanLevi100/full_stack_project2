@@ -18,8 +18,7 @@ body {
 
 .game-container {
     text-align: center;
-    color: #47f6fc;
-   
+    color: #47f6fc;  
     background-color: #64518e9b;
     padding: 20px;
     border-radius: 15px;
@@ -35,11 +34,85 @@ body {
     margin-bottom: 20px;
 }
 
-.seconds_score{
-    display:flex;
-    gap: 30px;
-    justify-content: center;
+.game-controls {
+    margin-bottom: 20px;
+    text-align: center;
 }
+
+#difficulty-selection {
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center; /* Center the buttons horizontally */
+    justify-content: center; /* Center the content vertically */
+    height: 100%;
+    gap: 10px; /* Space between the buttons */
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 10px;
+}
+
+#difficulty-selection h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    font-family: "Montserrat", serif;
+    font-weight: 600;
+}
+
+.difficulty-button {
+    padding: 10px 15px;
+    font-size: 16px;
+    background-color: #725a9fb9;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 150px; /* Optional: Set a consistent width for buttons */
+    text-align: center; /* Center text inside the button */
+    transition: background-color 0.3s;
+    font-family: "Montserrat", serif;
+}
+
+.difficulty-button:hover {
+    background-color: rgb(244, 27, 139);
+}
+
+.difficulty-button:active {
+    background-color: rgb(244, 27, 139);
+}
+
+#start-game-button {
+    padding: 5px 15px;
+    font-size: 16px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#start-game-button:hover {
+    background-color: #218838;
+}
+
+
+.seconds_score {
+    display: flex;
+    justify-content: space-between; /* Space out the timer and score */
+    padding: 10px 20px;
+    background-color: #64518e; /* Optional: Add a background color for clarity */
+    color: white;
+    font-size: 17px;
+    font-weight: 500;
+    border-radius: 10px;
+    font-family: "Montserrat", serif;
+    margin-bottom: 10px; /* Add spacing below the score section */
+}
+
+.seconds_score p {
+    margin: 0;
+    
+}
+
 
 #game-area {
     position: relative;
@@ -73,7 +146,7 @@ body {
 }
 
 #game-over-message {
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
@@ -84,8 +157,9 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    z-index: 1000; /* Ensure it appears above other elements */
+    z-index: 10; /* Ensure it appears above other elements */
     text-align: center;
+    border-radius: 10px; /* Match the #game-area's rounded corners */
 }
 
 #game-over-message h2 {
@@ -99,17 +173,24 @@ body {
 }
 
 #restart-button {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #28a745;
+    padding: 10px 15px;
+    font-size: 17px;
+    background-color: #f93f86;; /* Bright color to grab attention */
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    font-family: "Montserrat", serif;
 }
 
 #restart-button:hover {
-    background-color: #218838;
+    background-color: #d5618d;; /* Darker color on hover */
+    transform: translateY(-2px); /* Slight lift effect */
+}
+
+#restart-button:active {
+    transform: translateY(0); /* Reset lift effect on click */
 }
 
 

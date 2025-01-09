@@ -20,7 +20,7 @@
             <nav class="main-nav">
                 <ul>
                     <li><a href="../HTML/home_page.html"><i class="fas fa-trophy"></i> games</a></li>
-                    <li><a href="../HTML/statistics.html"><i class="fas fa-star"></i> score</a></li>
+                    <li><a href="../HTML/statistics.html"><i class="fas fa-star"></i> statistics</a></li>
                     <li><a href="#"><i class="fas fa-info-circle"></i> about us</a></li>
                 </ul>
             </nav>
@@ -35,9 +35,17 @@
 
     <main class="leaderboard-container">
         <h2>Leaderboard</h2>
-        <ul id="leaderboard">
-            <!-- Entries will be populated dynamically -->
-        </ul>
+        <table class="leaderboard-table">
+            <thead>
+                <tr>
+                    <th>Total score</th>
+                    <th>User</th>
+                </tr>
+            </thead>
+            <tbody id="leaderboard">
+                <!-- Entries will be populated dynamically -->
+            </tbody>
+        </table>
     </main>
 
     <script src="../JS/statistics.js"></script>

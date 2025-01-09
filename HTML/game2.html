@@ -21,7 +21,7 @@
             <nav class="main-nav">
                 <ul>
                     <li><a href="../HTML/home_page.html"><i class="fas fa-trophy"></i> games</a></li>
-                    <li><a href="../HTML/statistics.html"><i class="fas fa-star"></i> score</a></li>
+                    <li><a href="../HTML/statistics.html"><i class="fas fa-star"></i> statistics</a></li>
                     <li><a href="#"><i class="fas fa-info-circle"></i> about us</a></li>
                 </ul>
             </nav>
@@ -38,12 +38,21 @@
         <h1>!Catch the Apples</h1>
 
         <div class="game-container">
-            <div class="seconds_score">
-                
+            <div class="seconds_score" style="display: none;">
                 <p>time left: <span id="timer">30</span> seconds</p>
                 <p>score: <span id="score">0</span></p>
             </div>
-            <div id="game-area"></div>
+
+            <div id="game-area">
+                <!-- Difficulty Selection -->
+                <div id="difficulty-selection">
+                    <h2>Select Difficulty</h2>
+                    <button class="difficulty-button" data-difficulty="low">Low</button>
+                    <button class="difficulty-button" data-difficulty="medium">Medium</button>
+                    <button class="difficulty-button" data-difficulty="high">High</button>
+                </div>
+            </div>
+            
             <script src="../JS/game2.js"></script>
         </div>
 
